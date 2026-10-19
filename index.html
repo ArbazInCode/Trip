@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hiring Event Manager – Real-Time Recruiting Operations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#13294B;--navy-2:#1E3A66;--gold:#C9973A;--gold-2:#E7C77E;--gold-ink:#7A5A16;--gold-bg:#FBF3E2;
+  --bg:#F8F6F1;--panel:#FFFFFF;--ink:#14213D;--muted:#667085;--line:#ECE8DF;--line-2:#F2EFE8;--g1:#EEF2F8;
+  --blue:#2457C5;--blue-bg:#EAF0FD;--red:#C2362B;--red-bg:#FDECEA;--ok:#18794E;--ok-bg:#E7F6EE;--amber-bg:#FEF4DC;--violet:#6941C6;--violet-bg:#F1ECFD;
+  --shadow:0 1px 2px rgba(20,33,61,.04),0 6px 20px rgba(20,33,61,.06);--shadow-lg:0 2px 6px rgba(20,33,61,.06),0 18px 44px rgba(20,33,61,.10);
+  --serif:"Fraunces",Georgia,serif;--sans:"Plus Jakarta Sans","Manrope",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;--r:16px;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0F1522;--panel:#161E2E;--ink:#EEF1F6;--muted:#9AA4B5;--line:#253045;--line-2:#1D2638;--g1:#1F2A40;--gold-bg:#2D2414;--gold-ink:#E7C77E;--blue-bg:#18233D;--blue:#93B4F5;--red-bg:#3A1C1A;--ok-bg:#132C22;--ok:#6FD3A0;--amber-bg:#33290F;--violet-bg:#241B3D;--violet:#B9A6F0;--navy:#E7C77E;--shadow:0 1px 2px rgba(0,0,0,.3);--shadow-lg:0 10px 30px rgba(0,0,0,.4)}}
+:root[data-theme="dark"]{--bg:#0F1522;--panel:#161E2E;--ink:#EEF1F6;--muted:#9AA4B5;--line:#253045;--line-2:#1D2638;--g1:#1F2A40;--gold-bg:#2D2414;--gold-ink:#E7C77E;--blue-bg:#18233D;--blue:#93B4F5;--red-bg:#3A1C1A;--ok-bg:#132C22;--ok:#6FD3A0;--amber-bg:#33290F;--violet-bg:#241B3D;--violet:#B9A6F0;--navy:#E7C77E;--shadow:0 1px 2px rgba(0,0,0,.3);--shadow-lg:0 10px 30px rgba(0,0,0,.4)}
+html,body{height:100%}html{scroll-padding-top:calc(130px + env(safe-area-inset-top,0px))}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(900px 420px at 85% -10%,rgba(201,151,58,.10),transparent 60%),radial-gradient(800px 380px at -10% 0%,rgba(36,87,197,.07),transparent 60%);z-index:-1}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.hidden{display:none!important}
+/* Header */
+.top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.82);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .top{background:rgba(22,30,46,.85)}}
+:root[data-theme="dark"] .top{background:rgba(22,30,46,.85)}
+.top-in{max-width:1320px;margin:0 auto;padding:12px 24px 0;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#13294B,#2C5282);display:grid;place-items:center;color:#E7C77E;font-family:var(--serif);font-weight:600;font-size:1.05rem;box-shadow:0 6px 16px rgba(19,41,75,.25);flex:none}
+.brand{display:flex;flex-direction:column;line-height:1.15;margin-right:auto}
+.brand b{font-family:var(--serif);font-weight:600;font-size:1.22rem;color:var(--ink);letter-spacing:-.01em}
+.brand span{font-size:.78rem;color:var(--muted);margin-top:2px}
+.live{display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;color:var(--muted);background:var(--panel);border:1px solid var(--line);padding:6px 12px;border-radius:999px;white-space:nowrap}
+.dot{width:8px;height:8px;border-radius:50%;background:#22A06B;animation:pulse 2s infinite}.dot.local{background:var(--gold);animation:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,160,107,.5)}70%{box-shadow:0 0 0 7px rgba(34,160,107,0)}100%{box-shadow:0 0 0 0 rgba(34,160,107,0)}}
+.tabs-in{max-width:1320px;margin:0 auto;padding:10px 24px 12px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}.tabs-in::-webkit-scrollbar{display:none}
+.tab{all:unset;cursor:pointer;color:var(--muted);padding:8px 14px;font-weight:600;font-size:.9rem;white-space:nowrap;border-radius:999px;display:flex;gap:8px;align-items:center;transition:background .15s,color .15s}
+.tab:hover{color:var(--ink);background:var(--line-2)}
+.tab[aria-selected="true"]{color:#fff;background:var(--navy);box-shadow:0 4px 12px rgba(19,41,75,.22)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tab[aria-selected="true"]{color:#14213D}}
+:root[data-theme="dark"] .tab[aria-selected="true"]{color:#14213D}
+.tab:focus-visible{outline:2px solid var(--gold)}
+.tab small{font-size:.72rem;font-weight:700;background:var(--gold-bg);color:var(--gold-ink);border-radius:999px;padding:1px 7px}
+.tab[aria-selected="true"] small{background:rgba(255,255,255,.18);color:#fff}
+main{max-width:1320px;margin:0 auto;padding:28px 24px 64px}
+h1{font-family:var(--serif);font-weight:600;font-size:2rem;line-height:1.1;margin:0;letter-spacing:-.02em}
+h2{font-family:var(--serif);font-weight:600;font-size:1.28rem;margin:0 0 12px;letter-spacing:-.01em}h3{font-size:1rem;margin:0 0 8px}
+.sub{color:var(--muted);margin:6px 0 20px}
+.vhead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:20px}.vhead .sub{margin-bottom:0}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:1.35fr 1fr;gap:20px;align-items:start}
+@media (max-width:980px){.grid2{grid-template-columns:1fr!important}}
+.btn{text-decoration:none;border:1px solid transparent;border-radius:12px;padding:10px 18px;font-weight:700;font-size:.9rem;cursor:pointer;background:var(--navy);color:#fff;display:inline-flex;align-items:center;gap:8px;justify-content:center;white-space:nowrap;transition:transform .15s,box-shadow .15s,background .15s;box-shadow:0 4px 12px rgba(19,41,75,.18)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(19,41,75,.22)}.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn.gold{background:linear-gradient(135deg,#D9A846,#C08A2E);color:#fff;box-shadow:0 4px 14px rgba(192,138,46,.32)}
+.btn.ghost{background:var(--panel);color:var(--ink);border-color:var(--line);box-shadow:none}.btn.ghost:hover{background:var(--line-2)}
+.btn.sm{padding:6px 12px;font-size:.82rem;border-radius:10px}.btn.danger{background:var(--panel);color:var(--red);border-color:var(--line);box-shadow:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn:not(.ghost):not(.gold):not(.danger){color:#14213D}}
+:root[data-theme="dark"] .btn:not(.ghost):not(.gold):not(.danger){color:#14213D}
+label{display:block;font-weight:600;font-size:.84rem;margin-bottom:6px;color:var(--ink)}
+input[type=text],input[type=email],input[type=tel],input[type=search],input[type=date],input[type=number],select,textarea{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);transition:border-color .15s,box-shadow .15s}
+textarea{resize:vertical;min-height:90px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,151,58,.16)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.fgrid .full{grid-column:1/-1}
+@media (max-width:620px){.fgrid{grid-template-columns:1fr!important}}
+.hint{font-size:.8rem;color:var(--muted);margin-top:4px}.err{color:var(--red);font-weight:600;font-size:.88rem;margin:10px 0 0}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:700;border-radius:999px;padding:3px 10px;white-space:nowrap}
+.p-reg{background:var(--blue-bg);color:var(--blue)}.p-wait{background:var(--amber-bg);color:var(--gold-ink)}.p-in{background:var(--ok-bg);color:var(--ok)}
+.p-cancel{background:var(--line-2);color:var(--muted)}.p-no{background:var(--red-bg);color:var(--red)}.p-walk{background:var(--gold-bg);color:var(--gold-ink)}
+.p-invite{background:var(--ok);color:#fff}.p-develop{background:var(--violet-bg);color:var(--violet)}.p-not_yet{background:var(--line-2);color:var(--muted)}
+.t-open_house{background:var(--blue-bg);color:var(--blue)}.t-tryout{background:var(--violet-bg);color:var(--violet)}.t-camp{background:var(--ok-bg);color:var(--ok)}.t-info_session{background:var(--gold-bg);color:var(--gold-ink)}.t-showcase{background:var(--red-bg);color:var(--red)}
+.muted{color:var(--muted)}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.spacer{flex:1}
+.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;margin-bottom:20px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(var(--gold),#E7C77E)}
+.kpi .v{font-family:var(--serif);font-weight:600;font-size:2rem;line-height:1;letter-spacing:-.02em}.kpi .l{font-size:.8rem;color:var(--muted);margin-top:8px;font-weight:600}
+@media (max-width:1000px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}@media (max-width:520px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap;font-weight:700}
+td{padding:12px;border-bottom:1px solid var(--line-2);vertical-align:middle}tr:last-child td{border-bottom:0}
+tbody tr.click{cursor:pointer}tbody tr:hover{background:var(--line-2)}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.bar{height:8px;background:var(--line-2);border-radius:999px;overflow:hidden;margin-top:6px;min-width:90px}.bar i{display:block;height:100%;background:linear-gradient(90deg,#C08A2E,#E7C77E);border-radius:999px}.bar i.full{background:linear-gradient(90deg,#C2362B,#E7756C)}
+.empty{color:var(--muted);text-align:center;padding:30px 10px}
+.person{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line-2)}.person:last-child{border-bottom:0}
+.avatar{width:40px;height:40px;border-radius:12px;background:var(--g1);color:var(--navy-2);display:grid;place-items:center;font-weight:800;font-size:.85rem;flex:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .avatar{color:var(--gold-2)}}:root[data-theme="dark"] .avatar{color:var(--gold-2)}
+.person .who{flex:1;min-width:0}.person .who b{display:block}.person .who small{color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}@media (max-width:620px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;box-shadow:var(--shadow)}.stat .v{font-family:var(--serif);font-weight:600;font-size:1.8rem;line-height:1}.stat .l{font-size:.8rem;color:var(--muted);font-weight:600;margin-top:6px}
+/* public hero */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;background:var(--panel);border:1px solid var(--line);border-radius:22px;overflow:hidden;margin-bottom:24px;box-shadow:var(--shadow-lg)}
+.hero .copy{padding:40px 40px 36px;display:flex;flex-direction:column;justify-content:center}
+.hero .eb{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);font-weight:800}
+.hero h1{font-size:clamp(2.1rem,3.6vw,3rem);margin:10px 0 12px;line-height:1.05}.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p{color:var(--muted);margin:0;max-width:34em;font-size:1.02rem}
+.hero .ph{min-height:300px;background:#ddd center 30%/cover no-repeat;position:relative}
+.hero .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--panel) 0%,rgba(255,255,255,0) 22%)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hero .ph::after{background:linear-gradient(90deg,var(--panel) 0%,rgba(22,30,46,0) 22%)}}
+.hero .facts{display:flex;gap:22px;margin-top:22px;flex-wrap:wrap}.hero .facts div{font-size:.82rem;color:var(--muted)}.hero .facts b{display:block;font-family:var(--serif);font-size:1.5rem;color:var(--ink)}
+@media (max-width:820px){.hero{grid-template-columns:1fr}.hero .ph{min-height:220px;order:-1}.hero .ph::after{background:linear-gradient(0deg,var(--panel),rgba(255,255,255,0) 30%)}.hero .copy{padding:26px}}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.chip{all:unset;cursor:pointer;border:1px solid var(--line);border-radius:999px;padding:7px 15px;font-size:.85rem;font-weight:600;background:var(--panel);transition:all .15s}
+.chip:hover{border-color:var(--gold)}.chip[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}.chip:focus-visible{outline:2px solid var(--gold)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .chip[aria-pressed="true"]{color:#14213D}}:root[data-theme="dark"] .chip[aria-pressed="true"]{color:#14213D}
+.evcard{display:grid;grid-template-columns:84px 1fr auto;gap:18px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-bottom:12px;box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s,border-color .18s}
+.evcard:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.evcard[aria-current="true"]{border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,151,58,.14),var(--shadow-lg)}
+.date{text-align:center;background:linear-gradient(160deg,var(--gold-bg),var(--panel));border:1px solid var(--line);border-radius:14px;padding:10px 6px}
+.date b{display:block;font-family:var(--serif);font-weight:600;font-size:2rem;line-height:1;color:var(--ink)}.date span{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);font-weight:800}
+.evcard h3{font-size:1.08rem;margin:6px 0 2px}.evcard .meta{font-size:.85rem;color:var(--muted)}
+@media (max-width:640px){.evcard{grid-template-columns:68px 1fr}.evcard .act{grid-column:1/-1}}
+.kidbox{border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px;background:var(--bg)}
+.confirm{text-align:center;padding:22px 10px}.code{font-family:var(--serif);font-weight:600;font-size:2.8rem;letter-spacing:.08em;color:var(--navy);line-height:1;margin:10px 0}
+.bigsearch{font-size:1.1rem!important;padding:14px 16px!important}
+.scale{display:flex;gap:6px;flex-wrap:wrap}.scale input{position:absolute;opacity:0;pointer-events:none}
+.scale label{margin:0;border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-weight:600;font-size:.82rem;cursor:pointer;background:var(--panel);transition:all .15s}
+.scale label:hover{border-color:var(--gold)}.scale input:checked+label{background:var(--navy);border-color:var(--navy);color:#fff}.scale input:focus-visible+label{outline:2px solid var(--gold)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .scale input:checked+label{color:#14213D}}:root[data-theme="dark"] .scale input:checked+label{color:#14213D}
+.alist{display:grid;gap:8px;max-height:580px;overflow:auto;padding:2px}
+.aitem,.seg{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--panel);width:100%;transition:border-color .15s,box-shadow .15s}
+.aitem:hover,.seg:hover{border-color:var(--gold-2)}
+.aitem[aria-current="true"],.seg[aria-current="true"]{border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,151,58,.14)}.aitem:focus-visible,.seg:focus-visible{outline:2px solid var(--gold)}
+.seg{justify-content:space-between;margin-bottom:8px}.seg small{display:block;color:var(--muted);font-size:.8rem}
+.alert{border:1px solid #F1DFB4;background:var(--gold-bg);padding:11px 14px;border-radius:12px;font-size:.9rem;margin-bottom:8px}
+.alert.bad{border-color:#F4C7C2;background:var(--red-bg)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .alert{border-color:var(--line)}}
+.funnel div{margin-bottom:12px}.funnel .row{font-size:.88rem}
+.scrim{position:fixed;inset:0;background:rgba(20,33,61,.28);backdrop-filter:blur(3px);z-index:40;opacity:0;pointer-events:none;transition:opacity .2s}.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(580px,100%);background:var(--bg);z-index:41;transform:translateX(100%);transition:transform .28s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;box-shadow:-20px 0 50px rgba(20,33,61,.15);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.drawer.on{transform:none}
+.dh{padding:20px 22px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:flex-start;background:var(--panel)}
+.db{overflow:auto;padding:18px 22px;display:grid;gap:16px;flex:1}
+.modal{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:20px;background:rgba(20,33,61,.35);backdrop-filter:blur(4px)}
+.tag{background:#fff;color:#14213D;width:min(420px,100%);border-radius:20px;overflow:hidden;box-shadow:0 30px 60px rgba(20,33,61,.25);border:1px solid #ECE8DF}
+.tag .tb{background:linear-gradient(135deg,#FBF3E2,#fff);color:#7A5A16;padding:14px 20px;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800;border-bottom:1px solid #ECE8DF}
+.tag .tn{padding:24px 20px 6px;font-family:var(--serif);font-weight:600;font-size:2.8rem;line-height:1.05;color:#13294B}
+.tag .td{padding:0 20px 22px;color:#667085}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:#14213D;color:#fff;padding:12px 20px;border-radius:12px;font-size:.92rem;font-weight:600;opacity:0;pointer-events:none;transition:all .22s;z-index:60;max-width:calc(100% - 32px);box-shadow:var(--shadow-lg)}
+.toast.on{opacity:1;transform:translateX(-50%)}.toast.bad{background:var(--red)}
+.foot{max-width:1320px;margin:0 auto;padding:0 24px 32px;color:var(--muted);font-size:.8rem}
+.spin{width:14px;height:14px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:sp .7s linear infinite;display:inline-block}@keyframes sp{to{transform:rotate(360deg)}}
+.linkbtn{all:unset;cursor:pointer;color:var(--blue);font-weight:700;font-size:.82rem}.linkbtn:focus-visible{outline:2px solid var(--gold)}
+@media print{body::before{display:none}body *{visibility:hidden!important}.printme,.printme *{visibility:visible!important}.printme{position:fixed;inset:0;display:grid;place-items:start center;background:#fff;backdrop-filter:none}.printme .noprint{display:none!important}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* ---- Hiring Event Manager specifics ---- */
+.evsel{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:12px;padding:9px 12px;font-weight:600;max-width:100%;box-shadow:var(--shadow)}
+.hero{display:block;padding:32px 34px;background:linear-gradient(135deg,var(--panel) 0%,var(--gold-bg) 100%);position:relative;margin-bottom:0}
+.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border:2px solid rgba(201,151,58,.22);border-radius:50%}
+.hero .eyebrow{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);font-weight:800}
+.hero h1{font-size:2.4rem;margin:8px 0 10px;color:var(--ink)}.hero p{color:var(--muted);margin:0;max-width:40em}
+.facts{display:flex;gap:28px;flex-wrap:wrap;margin-top:20px;font-size:.92rem}
+.facts span{display:block;color:var(--gold-ink);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800}.facts b{display:block;color:var(--ink)}
+.p-registered{background:var(--line-2);color:var(--muted)}.p-checked_in{background:var(--blue-bg);color:var(--blue)}.p-interviewing{background:var(--violet-bg);color:var(--violet)}
+.p-completed{background:var(--ok-bg);color:var(--ok)}.p-advance{background:var(--ok);color:#fff}.p-hold{background:var(--amber-bg);color:var(--gold-ink)}.p-decline{background:var(--red-bg);color:var(--red)}
+.kpis{grid-template-columns:repeat(7,minmax(0,1fr))}.kpi.hl .v{color:var(--ok)}
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}@media (max-width:560px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rolelist{display:grid;gap:10px;margin-top:16px}.role{border:1px solid var(--line);border-radius:14px;padding:13px 15px;background:var(--panel);box-shadow:var(--shadow)}.role b{display:block}.role small{color:var(--muted)}
+.feed{list-style:none;margin:0;padding:0;max-height:440px;overflow:auto}.feed li{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--line-2);font-size:.9rem}.feed li:last-child{border-bottom:0}
+.feed time{color:var(--muted);font-size:.8rem;min-width:62px;font-variant-numeric:tabular-nums}
+.stats3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px}
+.sched{display:grid;grid-template-columns:330px 1fr;gap:20px;align-items:start}@media (max-width:1000px){.sched{grid-template-columns:1fr}}
+.qitem{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px;background:var(--bg)}.qitem b{display:block}.qitem .row{margin-top:8px}.qitem select{padding:7px 9px;font-size:.85rem;flex:1;min-width:0}
+.sgrid{display:grid;gap:8px;min-width:640px}.sgrid .h{font-size:.82rem;font-weight:700;padding:4px 6px}.sgrid .h small{display:block;color:var(--muted);font-weight:500}
+.sgrid .t{font-variant-numeric:tabular-nums;font-weight:700;font-size:.85rem;color:var(--muted);padding-top:12px}
+.cell{border:1px dashed var(--line);border-radius:12px;padding:9px 11px;min-height:64px;font-size:.84rem;color:var(--muted);display:flex;flex-direction:column;justify-content:center;background:var(--panel)}
+.cell.booked{border:1px solid #C9D8F7;background:var(--blue-bg);color:var(--ink)}.cell.in_progress{border:1px solid #D9CCF8;background:var(--violet-bg);color:var(--ink)}.cell.done{border:1px solid #BFE6D0;background:var(--ok-bg);color:var(--ink)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .cell.booked,:root:not([data-theme="light"]) .cell.in_progress,:root:not([data-theme="light"]) .cell.done{border-color:var(--line)}}
+.cell b{font-size:.86rem}.cell .row{margin-top:4px;gap:6px}
+.slotlist{display:grid;gap:8px}
+.slot{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:11px 13px;background:var(--panel);width:100%;transition:border-color .15s,box-shadow .15s}
+.slot:hover{border-color:var(--gold-2)}.slot[aria-current="true"]{border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,151,58,.14)}.slot:focus-visible{outline:2px solid var(--gold)}
+.slot .tm{font-weight:800;font-variant-numeric:tabular-nums;min-width:52px}.slot .who{flex:1;min-width:0}.slot .who small{display:block;color:var(--muted)}
+.rate{display:grid;grid-template-columns:1fr;gap:16px}.rq b{display:block;margin-bottom:7px}
+.quote{background:var(--bg);border-left:3px solid var(--gold);padding:11px 14px;border-radius:0 12px 12px 0;font-size:.93rem;margin:10px 0 0}
+.ai{border:1px solid var(--line);border-radius:var(--r);padding:18px;background:linear-gradient(180deg,var(--gold-bg),var(--panel) 65%);box-shadow:var(--shadow)}
+.ai h3{display:flex;align-items:center;gap:8px}.ai ul{margin:6px 0 12px;padding-left:18px}.ai li{margin-bottom:4px}
+.ev{display:grid;grid-template-columns:1fr 1.3fr;gap:8px 12px;font-size:.88rem;margin:6px 0 12px}.ev div:nth-child(odd){font-weight:600}
+.notice{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:8px;margin-top:8px}
+.tl{list-style:none;margin:0;padding:0;font-size:.88rem}.tl li{display:flex;gap:10px;padding:5px 0}.tl time{min-width:70px;color:var(--muted);font-variant-numeric:tabular-nums}
+.decide{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.decide .btn[aria-pressed="true"]{outline:3px solid var(--gold);outline-offset:1px}
+.sc{border:1px solid var(--line);border-radius:12px;padding:13px;background:var(--panel);font-size:.88rem;margin-bottom:8px}
+.sc .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:8px 0;text-align:center}.sc .grid div{background:var(--bg);border-radius:8px;padding:6px 2px}.sc .grid b{display:block;font-size:1.05rem}.sc .grid small{font-size:.68rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <div class="logo" aria-hidden="true">TSA</div><div class="brand"><b>Hiring Event Manager</b><span>Real-time recruiting operations</span></div>
+    <select class="evsel" id="evsel" aria-label="Choose event"></select>
+    <div class="live" id="live"><i class="dot local"></i><span>Connecting…</span></div>
+  </div>
+  <nav class="tabs" aria-label="Workspaces"><div class="tabs-in" role="tablist" id="tabs">
+    <button class="tab" role="tab" data-view="register">Registration</button>
+    <button class="tab" role="tab" data-view="desk">Front Desk <small id="t-desk"></small></button>
+    <button class="tab" role="tab" data-view="sched">Scheduler <small id="t-sched"></small></button>
+    <button class="tab" role="tab" data-view="iv">Interviewer</button>
+    <button class="tab" role="tab" data-view="cmd">Command Center</button>
+    <button class="tab" role="tab" data-view="setup">Setup</button>
+  </div></nav>
+</header>
+<main id="main" tabindex="-1"></main>
+<p class="foot">Independent concept by Arbaz Abdul using fictional candidates. Not an official Texas Sports Academy or Campbellsville University product. In production, each workspace would sit behind staff logins with role-based access.</p>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Candidate details" aria-hidden="true"></aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ================= Utilities ================= */
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const nowISO=()=>{const d=new Date();return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,19)};
+const tFmt=iso=>{if(!iso)return'';const d=new Date(iso);return isNaN(d)?'':d.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})};
+const slotFmt=t=>{const[h,m]=t.split(':').map(Number);return new Date(2000,0,1,h,m).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})};
+const initials=n=>n.split(/\s+/).map(x=>x[0]).join('').slice(0,2).toUpperCase();
+const slug=e=>e.toLowerCase().replace(/[^a-z0-9@._+~-]/g,'-').replace(/^\.+/,'x');
+const emailOK=e=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+function toast(msg,bad){const t=$('#toast');t.textContent=msg;t.classList.toggle('bad',!!bad);t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('on'),3200)}
+const STATUS={registered:'Not arrived',checked_in:'Waiting',interviewing:'Interviewing',completed:'Interviewed'};
+const DEC={advance:'Advance',hold:'Hold',decline:'Decline'};
+const REC={strong_yes:'Strong yes',yes:'Yes',no:'No',strong_no:'Strong no'};
+const COMP=[['communication','Communication'],['role','Role knowledge'],['experience','Relevant experience'],['learning','Learning &amp; coachability'],['mission','Mission fit']];
+const SCALE=['','Concern','Mixed','Solid','Strong'];
+const pill=c=>{const p=[`<span class="pill p-${c.status}">${STATUS[c.status]}</span>`];if(c.decision)p.push(`<span class="pill p-${c.decision}">${DEC[c.decision]}</span>`);if(c.source==='walk-in')p.push('<span class="pill p-walk">Walk-in</span>');return p.join(' ')};
+const TAB=Math.random().toString(36).slice(2);
+
+/* ================= Data stores ================= */
+const LOCAL_SEED={"events":[["tsa-austin",{"name":"Hiring Day","org":"Texas Sports Academy","concept":true,"dateLabel":"Saturday, November 21, 2026","timeLabel":"9:00 AM \u2013 12:30 PM","venue":"Austin, TX","codePrefix":"TSA","schedule":{"start":"09:00","end":"12:30","length":30},"blurb":"Meet the team, interview on the spot, and leave knowing your next step. We're hiring for a new volleyball campus in Austin.","roles":[{"id":"coach","title":"Volleyball Coach","team":"Athletics","type":"Full-time","status":"open","summary":"Lead daily skills training for middle and high school athletes.","requirements":["Coached or played volleyball at club, college, or pro level","Plans structured practices for different skill levels","Communicates clearly with athletes and parents","CPR/First Aid certified or willing to certify"]},{"id":"guide","title":"Academic Guide","team":"Academics","type":"Full-time","status":"open","summary":"Coach students through morning mastery-based learning.","requirements":["Experience teaching, tutoring, or mentoring students","Motivates students to set and reach goals","Comfortable with learning software and data","Patient, warm, and organized"]},{"id":"aiops","title":"AI Operations Associate","team":"Operations","type":"Full-time","pay":"$25/hour","status":"open","summary":"Build websites, automations, and AI tools the team uses daily.","requirements":["Has built real work with AI tools such as Claude Code, Cursor, or ChatGPT","Learns new tools quickly and works independently","Organized with tasks, deadlines, and follow-ups","Basic web, automation, or scripting skills"]},{"id":"helpdesk","title":"IT Help Desk Technician","team":"Operations","type":"Full-time","pay":"$25/hour","status":"open","summary":"First point of contact for student and family tech issues.","requirements":["End-user support experience","Troubleshoots laptops, tablets, accounts, and connectivity","Clear, patient written and verbal communication","Available for some weekend coverage"]}],"interviewers":[{"id":"maya","name":"Megan Price","title":"Head of Talent","room":"Room A","roleIds":["guide","aiops"]},{"id":"marcus","name":"Marcus Reed","title":"Athletics Director","room":"Room B","roleIds":["coach"]},{"id":"priya","name":"Rachel Evans","title":"Operations Lead","room":"Room C","roleIds":["aiops","helpdesk"]}]}],["cu-career-fair",{"name":"Career Fair","org":"Campbellsville University","concept":true,"dateLabel":"Thursday, March 4, 2027","timeLabel":"10:00 AM \u2013 2:00 PM","venue":"Campus Student Center","codePrefix":"CU","schedule":{"start":"10:00","end":"13:00","length":30},"blurb":"Students and recent graduates meet employers and interview for internships and entry-level roles.","roles":[{"id":"swe","title":"Software Engineering Intern","team":"Technology","type":"Internship","status":"open","summary":"Build features for internal web tools.","requirements":["Coursework or projects in programming","Comfortable with Git and debugging","Collaborates well on a team"]},{"id":"data","title":"Data Analyst (Entry-Level)","team":"Analytics","type":"Full-time","status":"open","summary":"Turn raw data into dashboards and decisions.","requirements":["SQL or spreadsheet analysis experience","Can explain findings simply","Detail-oriented"]},{"id":"itsupport","title":"IT Support Associate","team":"Technology","type":"Part-time","status":"open","summary":"Support staff and students with devices and accounts.","requirements":["Troubleshooting experience","Customer-service mindset","Reliable and organized"]}],"interviewers":[{"id":"dana","name":"Dana Brooks","title":"Campus Recruiter","room":"Table 1","roleIds":["swe","data"]},{"id":"omar","name":"Mike Sullivan","title":"IT Manager","room":"Table 2","roleIds":["itsupport","swe"]}]}]],"candidates":[["tsa-austin--jordan.hayes@example.com",{"eventId":"tsa-austin","name":"Jordan Hayes","email":"jordan.hayes@example.com","phone":"(512) 555-0142","roleId":"coach","experience":"Played Division I volleyball for four years as an outside hitter, then coached a 16U club team for three seasons. Runs position-specific drills and tracks athlete progress in spreadsheets. CPR certified.","availability":"Morning","code":"TSA-4K7Q","status":"completed","source":"online","registeredAt":"2026-10-01T08:58:00","checkedInAt":"2026-10-01T08:58:00","slotId":"tsa-austin--marcus--0900","interviewStartedAt":"2026-10-01T09:00:00","completedAt":"2026-10-01T09:27:00","decision":"advance","decidedAt":"2026-10-01T09:40:00","ai":null,"createdLive":false}],["tsa-austin--taylor.morgan@example.com",{"eventId":"tsa-austin","name":"Taylor Morgan","email":"taylor.morgan@example.com","phone":"(512) 555-0188","roleId":"guide","experience":"Middle school science teacher for five years; led an after-school tutoring program and used adaptive learning software to track mastery. Coached cross country as a volunteer.","availability":"Morning","code":"TSA-8M2D","status":"completed","source":"online","registeredAt":"2026-10-01T08:41:00","checkedInAt":"2026-10-01T08:52:00","slotId":"tsa-austin--maya--0900","interviewStartedAt":"2026-10-01T09:00:00","completedAt":"2026-10-01T09:24:00","decision":null,"decidedAt":null,"ai":null,"createdLive":false}],["tsa-austin--alex.rivera@example.com",{"eventId":"tsa-austin","name":"Alex Rivera","email":"alex.rivera@example.com","phone":"(737) 555-0119","roleId":"aiops","experience":"Built a booking site and a Zapier workflow for a local gym using Claude and ChatGPT. Created social ads with Midjourney. Self-taught basic JavaScript.","availability":"Morning","code":"TSA-2P9X","status":"completed","source":"online","registeredAt":"2026-10-01T08:45:00","checkedInAt":"2026-10-01T08:55:00","slotId":"tsa-austin--priya--0900","interviewStartedAt":"2026-10-01T09:00:00","completedAt":"2026-10-01T09:28:00","decision":"advance","decidedAt":"2026-10-01T09:45:00","ai":null,"createdLive":false}],["tsa-austin--sam.parker@example.com",{"eventId":"tsa-austin","name":"Sam Parker","email":"sam.parker@example.com","phone":"(512) 555-0175","roleId":"helpdesk","experience":"Two years on a university IT help desk resetting accounts, fixing laptops and printers, and writing knowledge-base articles. Comfortable with Chromebooks and Macs.","availability":"Morning","code":"TSA-6H3R","status":"completed","source":"online","registeredAt":"2026-10-01T08:50:00","checkedInAt":"2026-10-01T09:05:00","slotId":"tsa-austin--priya--0930","interviewStartedAt":"2026-10-01T09:30:00","completedAt":"2026-10-01T09:52:00","decision":"hold","decidedAt":"2026-10-01T10:00:00","ai":null,"createdLive":false}],["tsa-austin--riley.collins@example.com",{"eventId":"tsa-austin","name":"Riley Collins","email":"riley.collins@example.com","phone":"(512) 555-0131","roleId":"coach","experience":"Assistant varsity volleyball coach for two seasons and setter at a junior college. Runs summer clinics for beginners.","availability":"Morning","code":"TSA-3T5V","status":"interviewing","source":"online","registeredAt":"2026-10-01T09:02:00","checkedInAt":"2026-10-01T09:10:00","slotId":"tsa-austin--marcus--0930","interviewStartedAt":"2026-10-01T09:30:00","completedAt":null,"decision":null,"decidedAt":null,"ai":null,"createdLive":false}],["tsa-austin--morgan.brooks@example.com",{"eventId":"tsa-austin","name":"Morgan Brooks","email":"morgan.brooks@example.com","phone":"(737) 555-0164","roleId":"guide","experience":"Former reading specialist and Montessori assistant. Experienced with small-group instruction and parent conferences.","availability":"Morning","code":"TSA-9Q1L","status":"checked_in","source":"online","registeredAt":"2026-10-01T09:05:00","checkedInAt":"2026-10-01T09:20:00","slotId":"tsa-austin--maya--0930","interviewStartedAt":null,"completedAt":null,"decision":null,"decidedAt":null,"ai":null,"createdLive":false}],["tsa-austin--casey.turner@example.com",{"eventId":"tsa-austin","name":"Casey Turner","email":"casey.turner@example.com","phone":"(512) 555-0107","roleId":"aiops","experience":"Marketing coordinator who automated weekly reports with Google Sheets and Make. Uses Perplexity and ChatGPT daily; built a Squarespace site for a nonprofit.","availability":"Morning","code":"TSA-7B4N","status":"checked_in","source":"online","registeredAt":"2026-10-01T09:12:00","checkedInAt":"2026-10-01T09:25:00","slotId":"tsa-austin--priya--1000","interviewStartedAt":null,"completedAt":null,"decision":null,"decidedAt":null,"ai":null,"createdLive":false}],["tsa-austin--avery.johnson@example.com",{"eventId":"tsa-austin","name":"Avery Johnson","email":"avery.johnson@example.com","phone":"","roleId":"coach","experience":"Club volleyball director for a 60-athlete program; former libero. Strong on fundamentals and team culture.","availability":"Morning","code":"TSA-5C8W","status":"checked_in","source":"online","registeredAt":"2026-10-01T09:15:00","checkedInAt":"2026-10-01T09:31:00","slotId":null,"interviewStartedAt":null,"completedAt":null,"decision":null,"decidedAt":null,"ai":null,"createdLive":false}],["tsa-austin--jamie.torres@example.com",{"eventId":"tsa-austin","name":"Jamie Torres","email":"jamie.torres@example.com","phone":"","roleId":"helpdesk","experience":"Retail tech support for 18 months: device setup, returns, and account troubleshooting. Bilingual English/Spanish.","availability":"Morning","code":"TSA-1F6K","status":"checked_in","source":"online","registeredAt":"2026-10-01T09:18:00","checkedInAt":"2026-10-01T09:33:00","slotId":null,"interviewStartedAt":null,"completedAt":null,"decision":null,"decidedAt":null,"ai":null,"createdLive":false}],["tsa-austin--drew.peterson@example.com",{"eventId":"tsa-austin","name":"Drew Peterson","email":"drew.peterson@example.com","phone":"","roleId":"guide","experience":"Peer tutor in college for math and chemistry; summer camp counselor for three years.","availability":"Morning","code":"TSA-4S2Z","status":"checked_in","source":"online","registeredAt":"2026-10-01T09:20:00","checkedInAt":"2026-10-01T09:36:00","slotId":null,"interviewStartedAt":null,"completedAt":null,"decision":null,"decidedAt":null,"ai":null,"createdLive":false}],["tsa-austin--quinn.harper@example.com",{"eventId":"tsa-austin","name":"Quinn Harper","email":"quinn.harper@example.com","phone":"","roleId":"aiops","experience":"Built Python scripts to clean sales data and a simple dashboard in Looker Studio. Learning Cursor.","availability":"Mid-morning","code":"TSA-8G3J","status":"registered","source":"online","registeredAt":"2026-10-01T08:30:00","checkedInAt":null,"slotId":null,"interviewStartedAt":null,"completedAt":null,"decision":null,"decidedAt":null,"ai":null,"createdLive":false}],["tsa-austin--reese.walker@example.com",{"eventId":"tsa-austin","name":"Reese Walker","email":"reese.walker@example.com","phone":"","roleId":"coach","experience":"Played beach volleyball competitively; coached youth camps at a rec center.","availability":"Mid-morning","code":"TSA-2D7Y","status":"registered","source":"online","registeredAt":"2026-10-01T08:33:00","checkedInAt":null,"slotId":null,"interviewStartedAt":null,"completedAt":null,"decision":null,"decidedAt":null,"ai":null,"createdLive":false}],["tsa-austin--skyler.adams@example.com",{"eventId":"tsa-austin","name":"Skyler Adams","email":"skyler.adams@example.com","phone":"","roleId":"guide","experience":"Online tutor for high school English with four years of experience.","availability":"Mid-morning","code":"TSA-6N9E","status":"registered","source":"online","registeredAt":"2026-10-01T08:36:00","checkedInAt":null,"slotId":null,"interviewStartedAt":null,"completedAt":null,"decision":null,"decidedAt":null,"ai":null,"createdLive":false}],["tsa-austin--parker.diaz@example.com",{"eventId":"tsa-austin","name":"Parker Diaz","email":"parker.diaz@example.com","phone":"","roleId":"helpdesk","experience":"IT intern at a school district; imaged Chromebooks and managed a ticket queue.","availability":"Mid-morning","code":"TSA-3R5U","status":"registered","source":"online","registeredAt":"2026-10-01T08:39:00","checkedInAt":null,"slotId":null,"interviewStartedAt":null,"completedAt":null,"decision":null,"decidedAt":null,"ai":null,"createdLive":false}],["tsa-austin--emerson.clark@example.com",{"eventId":"tsa-austin","name":"Emerson Clark","email":"emerson.clark@example.com","phone":"","roleId":"coach","experience":"Former high school head coach with a state playoff run; USA Volleyball certified.","availability":"Mid-morning","code":"TSA-9W2A","status":"registered","source":"online","registeredAt":"2026-10-01T08:42:00","checkedInAt":null,"slotId":null,"interviewStartedAt":null,"completedAt":null,"decision":null,"decidedAt":null,"ai":null,"createdLive":false}],["cu-career-fair--hannah.scott@example.com",{"eventId":"cu-career-fair","name":"Hannah Scott","email":"hannah.scott@example.com","phone":"","roleId":"swe","experience":"Senior CS student; built a React class scheduler and a Python budgeting app.","availability":"Morning","code":"CU-7K2M","status":"checked_in","source":"online","registeredAt":"2026-10-01T09:40:00","checkedInAt":"2026-10-01T10:05:00","slotId":null,"interviewStartedAt":null,"completedAt":null,"decision":null,"decidedAt":null,"ai":null,"createdLive":false}],["cu-career-fair--luis.ortega@example.com",{"eventId":"cu-career-fair","name":"Luis Ortega","email":"luis.ortega@example.com","phone":"","roleId":"data","experience":"Statistics minor; analyzed survey data in SQL and built Tableau dashboards for a campus club.","availability":"Morning","code":"CU-3P8T","status":"registered","source":"online","registeredAt":"2026-10-01T09:40:00","checkedInAt":null,"slotId":null,"interviewStartedAt":null,"completedAt":null,"decision":null,"decidedAt":null,"ai":null,"createdLive":false}],["cu-career-fair--grace.miller@example.com",{"eventId":"cu-career-fair","name":"Grace Miller","email":"grace.miller@example.com","phone":"","roleId":"itsupport","experience":"Student worker at the campus help desk for two years.","availability":"Morning","code":"CU-5H1D","status":"registered","source":"online","registeredAt":"2026-10-01T09:40:00","checkedInAt":null,"slotId":null,"interviewStartedAt":null,"completedAt":null,"decision":null,"decidedAt":null,"ai":null,"createdLive":false}],["cu-career-fair--ben.fischer@example.com",{"eventId":"cu-career-fair","name":"Ben Fischer","email":"ben.fischer@example.com","phone":"","roleId":"swe","experience":"Hackathon winner; contributes to open-source JavaScript libraries.","availability":"Morning","code":"CU-9V4Q","status":"registered","source":"online","registeredAt":"2026-10-01T09:40:00","checkedInAt":null,"slotId":null,"interviewStartedAt":null,"completedAt":null,"decision":null,"decidedAt":null,"ai":null,"createdLive":false}]],"slots":[["tsa-austin--maya--0900",{"eventId":"tsa-austin","interviewerId":"maya","time":"09:00","candidateId":"tsa-austin--taylor.morgan@example.com","status":"done"}],["tsa-austin--maya--0930",{"eventId":"tsa-austin","interviewerId":"maya","time":"09:30","candidateId":"tsa-austin--morgan.brooks@example.com","status":"booked"}],["tsa-austin--maya--1000",{"eventId":"tsa-austin","interviewerId":"maya","time":"10:00","candidateId":null,"status":"open"}],["tsa-austin--maya--1030",{"eventId":"tsa-austin","interviewerId":"maya","time":"10:30","candidateId":null,"status":"open"}],["tsa-austin--maya--1100",{"eventId":"tsa-austin","interviewerId":"maya","time":"11:00","candidateId":null,"status":"open"}],["tsa-austin--maya--1130",{"eventId":"tsa-austin","interviewerId":"maya","time":"11:30","candidateId":null,"status":"open"}],["tsa-austin--maya--1200",{"eventId":"tsa-austin","interviewerId":"maya","time":"12:00","candidateId":null,"status":"open"}],["tsa-austin--marcus--0900",{"eventId":"tsa-austin","interviewerId":"marcus","time":"09:00","candidateId":"tsa-austin--jordan.hayes@example.com","status":"done"}],["tsa-austin--marcus--0930",{"eventId":"tsa-austin","interviewerId":"marcus","time":"09:30","candidateId":"tsa-austin--riley.collins@example.com","status":"in_progress"}],["tsa-austin--marcus--1000",{"eventId":"tsa-austin","interviewerId":"marcus","time":"10:00","candidateId":null,"status":"open"}],["tsa-austin--marcus--1030",{"eventId":"tsa-austin","interviewerId":"marcus","time":"10:30","candidateId":null,"status":"open"}],["tsa-austin--marcus--1100",{"eventId":"tsa-austin","interviewerId":"marcus","time":"11:00","candidateId":null,"status":"open"}],["tsa-austin--marcus--1130",{"eventId":"tsa-austin","interviewerId":"marcus","time":"11:30","candidateId":null,"status":"open"}],["tsa-austin--marcus--1200",{"eventId":"tsa-austin","interviewerId":"marcus","time":"12:00","candidateId":null,"status":"open"}],["tsa-austin--priya--0900",{"eventId":"tsa-austin","interviewerId":"priya","time":"09:00","candidateId":"tsa-austin--alex.rivera@example.com","status":"done"}],["tsa-austin--priya--0930",{"eventId":"tsa-austin","interviewerId":"priya","time":"09:30","candidateId":"tsa-austin--sam.parker@example.com","status":"done"}],["tsa-austin--priya--1000",{"eventId":"tsa-austin","interviewerId":"priya","time":"10:00","candidateId":"tsa-austin--casey.turner@example.com","status":"booked"}],["tsa-austin--priya--1030",{"eventId":"tsa-austin","interviewerId":"priya","time":"10:30","candidateId":null,"status":"open"}],["tsa-austin--priya--1100",{"eventId":"tsa-austin","interviewerId":"priya","time":"11:00","candidateId":null,"status":"open"}],["tsa-austin--priya--1130",{"eventId":"tsa-austin","interviewerId":"priya","time":"11:30","candidateId":null,"status":"open"}],["tsa-austin--priya--1200",{"eventId":"tsa-austin","interviewerId":"priya","time":"12:00","candidateId":null,"status":"open"}],["cu-career-fair--dana--1000",{"eventId":"cu-career-fair","interviewerId":"dana","time":"10:00","candidateId":null,"status":"open"}],["cu-career-fair--dana--1030",{"eventId":"cu-career-fair","interviewerId":"dana","time":"10:30","candidateId":null,"status":"open"}],["cu-career-fair--dana--1100",{"eventId":"cu-career-fair","interviewerId":"dana","time":"11:00","candidateId":null,"status":"open"}],["cu-career-fair--dana--1130",{"eventId":"cu-career-fair","interviewerId":"dana","time":"11:30","candidateId":null,"status":"open"}],["cu-career-fair--dana--1200",{"eventId":"cu-career-fair","interviewerId":"dana","time":"12:00","candidateId":null,"status":"open"}],["cu-career-fair--dana--1230",{"eventId":"cu-career-fair","interviewerId":"dana","time":"12:30","candidateId":null,"status":"open"}],["cu-career-fair--omar--1000",{"eventId":"cu-career-fair","interviewerId":"omar","time":"10:00","candidateId":null,"status":"open"}],["cu-career-fair--omar--1030",{"eventId":"cu-career-fair","interviewerId":"omar","time":"10:30","candidateId":null,"status":"open"}],["cu-career-fair--omar--1100",{"eventId":"cu-career-fair","interviewerId":"omar","time":"11:00","candidateId":null,"status":"open"}],["cu-career-fair--omar--1130",{"eventId":"cu-career-fair","interviewerId":"omar","time":"11:30","candidateId":null,"status":"open"}],["cu-career-fair--omar--1200",{"eventId":"cu-career-fair","interviewerId":"omar","time":"12:00","candidateId":null,"status":"open"}],["cu-career-fair--omar--1230",{"eventId":"cu-career-fair","interviewerId":"omar","time":"12:30","candidateId":null,"status":"open"}]],"scorecards":[["tsa-austin--jordan.hayes@example.com--marcus",{"eventId":"tsa-austin","candidateId":"tsa-austin--jordan.hayes@example.com","interviewerId":"marcus","ratings":{"communication":4,"role":4,"experience":4,"learning":3,"mission":4},"notes":"Walked through a full practice plan for mixed-level athletes and explained how she adjusts drills. Strong parent-communication examples.","recommendation":"strong_yes","submittedAt":"2026-10-01T09:27:00"}],["tsa-austin--taylor.morgan@example.com--maya",{"eventId":"tsa-austin","candidateId":"tsa-austin--taylor.morgan@example.com","interviewerId":"maya","ratings":{"communication":4,"role":4,"experience":3,"learning":4,"mission":4},"notes":"Gave concrete examples of moving students forward with mastery checks. Very comfortable with data dashboards.","recommendation":"yes","submittedAt":"2026-10-01T09:24:00"}],["tsa-austin--alex.rivera@example.com--priya",{"eventId":"tsa-austin","candidateId":"tsa-austin--alex.rivera@example.com","interviewerId":"priya","ratings":{"communication":3,"role":4,"experience":3,"learning":4,"mission":3},"notes":"Demoed the gym booking site and explained the Zapier steps clearly. Less experience with dashboards; eager to learn.","recommendation":"yes","submittedAt":"2026-10-01T09:28:00"}],["tsa-austin--sam.parker@example.com--priya",{"eventId":"tsa-austin","candidateId":"tsa-austin--sam.parker@example.com","interviewerId":"priya","ratings":{"communication":3,"role":3,"experience":3,"learning":3,"mission":3},"notes":"Solid troubleshooting steps for a Wi-Fi scenario. Unsure about weekend availability; follow up.","recommendation":"yes","submittedAt":"2026-10-01T09:52:00"}]]};
+class LocalStore{
+  constructor(){this.mode='local';this.key='hem-demo-v1';this.subs=[];
+    let d=null;try{d=JSON.parse(localStorage.getItem(this.key))}catch(e){}
+    this.d=d||this.fromSeed();
+    try{this.bc=new BroadcastChannel('hem-demo');this.bc.onmessage=()=>{try{this.d=JSON.parse(localStorage.getItem(this.key))||this.d}catch(e){}this.emit()}}catch(e){this.bc=null}
+    window.addEventListener('storage',e=>{if(e.key===this.key){try{this.d=JSON.parse(e.newValue)||this.d}catch(_){}this.emit()}});}
+  fromSeed(){const d={};for(const k in LOCAL_SEED){d[k]={};for(const[id,v]of LOCAL_SEED[k])d[k][id]=JSON.parse(JSON.stringify(v))}return d}
+  persist(){try{localStorage.setItem(this.key,JSON.stringify(this.d))}catch(e){}this.bc&&this.bc.postMessage('x');this.emit()}
+  emit(){this.subs.forEach(s=>s.cb(this.list(s.col,s.ev)))}
+  list(col,ev){return Object.entries(this.d[col]||{}).filter(([,v])=>!ev||v.eventId===ev).map(([id,v])=>({id,...v}))}
+  async get(col,id){const v=(this.d[col]||{})[id];return v?{id,...JSON.parse(JSON.stringify(v))}:null}
+  async set(col,id,data){(this.d[col]??={})[id]=JSON.parse(JSON.stringify(data));this.persist()}
+  async update(col,id,patch){const cur=(this.d[col]||{})[id];if(!cur)throw{code:'invalid_argument',message:'missing'};const merge=(a,b)=>{for(const k in b){if(b[k]&&typeof b[k]==='object'&&!Array.isArray(b[k])&&a[k]&&typeof a[k]==='object')merge(a[k],b[k]);else a[k]=b[k]}};merge(cur,JSON.parse(JSON.stringify(patch)));this.persist()}
+  async remove(col,id){if(this.d[col])delete this.d[col][id];this.persist()}
+  sub(col,ev,cb){const s={col,ev,cb};this.subs.push(s);setTimeout(()=>cb(this.list(col,ev)));return()=>{this.subs=this.subs.filter(x=>x!==s)}}
+  async claim(){return true}
+  reset(){this.d=this.fromSeed();this.persist()}
+}
+class DbStore{
+  constructor(db){this.mode='live';this.db=db}
+  ref(col,id){return this.db.collection(col).doc(id)}
+  async get(col,id){const s=await this.ref(col,id).get();return s.exists?{id:s.id,...s.data()}:null}
+  async set(col,id,data){await this.ref(col,id).set(data)}
+  async update(col,id,patch){await this.ref(col,id).update(patch)}
+  async remove(col,id){await this.ref(col,id).delete()}
+  sub(col,ev,cb){const q=ev?this.db.collection(col).where('eventId','==',ev):this.db.collection(col);
+    return q.onSnapshot(s=>cb(s.docs.map(d=>({id:d.id,...d.data()}))),e=>{console.error(e);setLive('error')})}
+  async claim(col,id){try{const r=await this.ref(col,id).acquire({holder:TAB,ttlMs:4000});return r.acquired}catch(e){return true}}
+}
+let store=null, sample=null, downloads=null;
+
+/* ================= State ================= */
+const S={events:[],candidates:[],slots:[],scorecards:[],promos:[]};
+let EV=null, view=null, unsubs=[], drawerId=null;
+const pref=(k,v)=>{try{if(v===undefined)return localStorage.getItem('hem-'+k);localStorage.setItem('hem-'+k,v)}catch(e){return null}};
+const event=()=>S.events.find(e=>e.id===EV);
+const roleOf=id=>(event()?.roles||[]).find(r=>r.id===id)||{title:'Unknown role',requirements:[]};
+const ivOf=id=>(event()?.interviewers||[]).find(i=>i.id===id)||{name:'Unassigned',room:''};
+const cand=id=>S.candidates.find(c=>c.id===id);
+const slotOf=c=>c&&c.slotId?S.slots.find(s=>s.id===c.slotId):null;
+
+function setLive(m){const l=$('#live');
+  if(m==='live')l.innerHTML='<i class="dot"></i><span>Live · synced across devices</span>';
+  else if(m==='local')l.innerHTML='<i class="dot local"></i><span>Demo mode · try anything, saved in your browser</span>';
+  else l.innerHTML='<i class="dot local"></i><span>Reconnecting…</span>';}
+
+function subscribeEvent(){
+  unsubs.forEach(u=>u());unsubs=[];
+  S.candidates=[];S.slots=[];S.scorecards=[];S.promos=[];
+  ['candidates','slots','scorecards','promos'].forEach(col=>unsubs.push(store.sub(col,EV,list=>{S[col]=list;refresh()})));
+}
+let rq=false;
+function refresh(){if(rq)return;rq=true;requestAnimationFrame(()=>{rq=false;
+  const c=S.candidates;
+  $('#t-desk').textContent=c.filter(x=>x.status==='registered').length||'';
+  const q=c.filter(x=>x.status==='checked_in'&&!x.slotId).length;$('#t-sched').textContent=q||'';
+  if(view&&V[view].update)V[view].update();
+  if(drawerMode==='promo')Promo.update();else if(drawerId)Drawer.update();
+})}
+
+/* ================= Actions (with conflict checks) ================= */
+const A={
+  async register({name,email,phone,roleId,experience,availability,walkin}){
+    const em=email.trim().toLowerCase(),id=`${EV}--${slug(em)}`;
+    if(S.candidates.some(c=>c.email===em))return{dup:true};
+    if(!(await store.claim('candidates',id)))return{busy:true};
+    if(await store.get('candidates',id))return{dup:true};
+    const pre=event().codePrefix,ABC='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let code;
+    do{code=pre+'-'+Array.from({length:4},()=>ABC[Math.floor(Math.random()*ABC.length)]).join('')}while(S.candidates.some(c=>c.code===code));
+    const t=nowISO();
+    const rec={eventId:EV,name:name.trim(),email:em,phone:phone.trim(),roleId,experience:experience.trim(),availability,code,
+      status:walkin?'checked_in':'registered',source:walkin?'walk-in':'online',registeredAt:t,checkedInAt:walkin?t:null,
+      slotId:null,interviewStartedAt:null,completedAt:null,decision:null,decidedAt:null,ai:null,createdLive:true};
+    await store.set('candidates',id,rec);return{ok:true,id,rec};
+  },
+  async checkIn(id){const c=await store.get('candidates',id);if(!c)return{err:'Candidate not found.'};
+    if(c.status!=='registered')return{already:true,at:c.checkedInAt,c};
+    await store.update('candidates',id,{status:'checked_in',checkedInAt:nowISO()});return{ok:true,c}},
+  async assign(slotId,cid){
+    if(!(await store.claim('slots',slotId)))return{err:'Someone else is assigning this slot right now. Try again.'};
+    const s=await store.get('slots',slotId);if(!s)return{err:'Slot not found.'};
+    if(s.candidateId)return{err:`That slot was just taken by ${cand(s.candidateId)?.name||'another candidate'}.`};
+    const c=await store.get('candidates',cid);if(!c)return{err:'Candidate not found.'};
+    if(c.slotId)return{err:`${c.name} is already scheduled at ${slotFmt(S.slots.find(x=>x.id===c.slotId)?.time||'00:00')}.`};
+    if(c.status!=='checked_in')return{err:`${c.name} must be checked in before being scheduled.`};
+    const iv=ivOf(s.interviewerId);if(!(iv.roleIds||[]).includes(c.roleId))return{err:`${iv.name} doesn't interview for ${roleOf(c.roleId).title}.`};
+    await store.update('slots',slotId,{candidateId:cid,status:'booked'});await store.update('candidates',cid,{slotId});return{ok:true,iv,s}},
+  async unassign(slotId){const s=await store.get('slots',slotId);if(!s||!s.candidateId)return{err:'Slot is already open.'};
+    if(s.status!=='booked')return{err:'This interview has already started.'};
+    const cid=s.candidateId;await store.update('slots',slotId,{candidateId:null,status:'open'});
+    if(await store.get('candidates',cid))await store.update('candidates',cid,{slotId:null});return{ok:true}},
+  async autoAssign(){const queue=S.candidates.filter(c=>c.status==='checked_in'&&!c.slotId).sort((a,b)=>(a.checkedInAt||'').localeCompare(b.checkedInAt||''));
+    let n=0,skipped=0;const taken=new Set();
+    for(const c of queue){const open=S.slots.filter(s=>!s.candidateId&&!taken.has(s.id)&&ivOf(s.interviewerId).roleIds?.includes(c.roleId)).sort((a,b)=>a.time.localeCompare(b.time));
+      if(!open.length){skipped++;continue}
+      let done=false;for(const s of open.slice(0,3)){const r=await A.assign(s.id,c.id);if(r.ok){taken.add(s.id);n++;done=true;break}}
+      if(!done)skipped++;}
+    return{n,skipped}},
+  async start(slotId){const s=await store.get('slots',slotId);if(!s||s.status!=='booked')return{err:'This interview can’t be started.'};
+    await store.update('slots',slotId,{status:'in_progress'});await store.update('candidates',s.candidateId,{status:'interviewing',interviewStartedAt:nowISO()});return{ok:true}},
+  async submitScore(slotId,ivId,data){const s=await store.get('slots',slotId);if(!s||s.status!=='in_progress')return{err:'Start the interview before submitting a scorecard.'};
+    const cid=s.candidateId,t=nowISO();
+    await store.set('scorecards',`${cid}--${ivId}`,{eventId:EV,candidateId:cid,interviewerId:ivId,...data,submittedAt:t});
+    await store.update('slots',slotId,{status:'done'});await store.update('candidates',cid,{status:'completed',completedAt:t});return{ok:true}},
+  async decide(cid,d){const c=await store.get('candidates',cid);if(!c)return{err:'Candidate not found.'};
+    if(d!=='hold'&&c.status!=='completed')return{err:'Make Advance or Decline decisions after the interview scorecard is in.'};
+    await store.update('candidates',cid,{decision:d,decidedAt:nowISO()});return{ok:true}},
+  async clearTest(){const live=S.candidates.filter(c=>c.createdLive);
+    for(const c of live){const s=slotOf(c);if(s)await store.update('slots',s.id,{candidateId:null,status:'open'});
+      for(const sc of S.scorecards.filter(x=>x.candidateId===c.id))await store.remove('scorecards',sc.id);
+      await store.remove('candidates',c.id)}return live.length}
+};
+
+/* ================= AI ================= */
+async function aiBrief(cid,btn){
+  if(!sample){toast('AI briefings run in the Claude-hosted version of this app.',true);return}
+  const c=cand(cid);if(!c)return;const r=roleOf(c.roleId);
+  btn&&(btn.disabled=true,btn.innerHTML='<span class="spin"></span> Preparing briefing…');
+  const prompt=`You are helping an interview panel at a K-12 sports school prepare for a live interview.
+Use ONLY the information below. Do NOT score, rank, or judge whether the candidate is suitable, and do NOT infer age, gender, ethnicity, disability, or any other personal characteristic. Humans make all hiring decisions.
+
+ROLE: ${r.title}
+ROLE SUMMARY: ${r.summary}
+REQUIREMENTS:
+${r.requirements.map(x=>'- '+x).join('\n')}
+
+CANDIDATE APPLICATION:
+Name: ${c.name}
+Experience in their own words: ${c.experience}
+Availability: ${c.availability||'Not given'}
+
+Return ONLY JSON in this exact shape:
+{"summary":"2-3 factual sentences about relevant experience","evidence":[{"requirement":"<each requirement, verbatim>","evidence":"what the application says, or 'Not mentioned'"}],"clarify":["2-3 specific things to ask about because the application doesn't say"],"questions":["exactly 3 job-related, open-ended interview questions"]}`;
+  try{const out=await sample.json(prompt);
+    if(!out||!out.summary)throw{code:'invalid_json'};
+    const ai={summary:String(out.summary),evidence:(out.evidence||[]).slice(0,8).map(x=>({requirement:String(x.requirement||''),evidence:String(x.evidence||'')})),
+      clarify:(out.clarify||[]).slice(0,4).map(String),questions:(out.questions||[]).slice(0,3).map(String),generatedAt:nowISO()};
+    await store.update('candidates',cid,{ai});toast('AI briefing ready.');
+  }catch(e){toast(e&&e.code==='not_granted'?'AI access was declined for this session.':e&&e.code==='rate_limited'?'AI is busy. Try again in a moment.':'Couldn’t prepare the briefing. Try again.',true)}
+  finally{if(btn){btn.disabled=false;btn.textContent='Regenerate briefing'}}
+}
+function aiBlock(c,compact){
+  const ai=c.ai;
+  if(!ai)return `<div class="ai"><h3>✦ AI interview briefing</h3><p class="muted" style="margin:0 0 12px">A factual summary of the application, what to clarify, and three suggested questions. AI never scores or decides.</p><button class="btn gold sm" data-act="brief" data-id="${esc(c.id)}">Generate briefing</button></div>`;
+  return `<div class="ai"><h3>✦ AI interview briefing</h3>
+  <p style="margin:0 0 10px">${esc(ai.summary)}</p>
+  ${compact?'':`<b style="font-size:.85rem">Evidence against requirements</b><div class="ev">${ai.evidence.map(x=>`<div>${esc(x.requirement)}</div><div class="${/not mentioned/i.test(x.evidence)?'muted':''}">${esc(x.evidence)}</div>`).join('')}</div>`}
+  <b style="font-size:.85rem">Clarify in the interview</b><ul>${ai.clarify.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+  <b style="font-size:.85rem">Suggested questions</b><ul>${ai.questions.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+  <div class="row"><button class="btn ghost sm" data-act="brief" data-id="${esc(c.id)}">Regenerate briefing</button><span class="spacer"></span><span class="hint">Generated ${tFmt(ai.generatedAt)}</span></div>
+  <p class="notice">AI summarizes the application only. It doesn’t score candidates or make hiring decisions. Interviewers do.</p></div>`;
+}
+
+/* ================= Views ================= */
+const V={};
+
+/* ---- Registration ---- */
+V.register={
+  mount(){const e=event();
+    $('#main').innerHTML=`<div class="grid2">
+    <section>
+      <div class="hero"><span class="eyebrow">${esc(e.org)}${e.concept?' · Concept':''}</span><h1>${esc(e.name)}</h1><p>${esc(e.blurb)}</p>
+        <div class="facts"><div><span>Date</span><b>${esc(e.dateLabel)}</b></div><div><span>Time</span><b>${esc(e.timeLabel)}</b></div><div><span>Where</span><b>${esc(e.venue)}</b></div></div></div>
+      <h2 style="margin-top:22px">Open roles</h2>
+      <div class="rolelist">${openRoles().map(r=>`<div class="role"><b>${esc(r.title)}</b><small>${esc(r.team)}${r.type?' · '+esc(r.type):''}${r.pay?' · '+esc(r.pay):''} · ${esc(r.summary)}</small></div>`).join('')||'<div class="role"><small>No open roles right now. Check back soon.</small></div>'}</div>
+      <p class="hint" id="regcount"></p>
+    </section>
+    <section class="panel" id="regpanel"></section></div>`;
+    this.form();},
+  form(){const e=event();
+    $('#regpanel').innerHTML=`<h2>Register to interview</h2><p class="sub">Takes about two minutes. You'll get a check-in code to show at the front desk.</p>
+    <form id="regf" novalidate><div class="fgrid">
+      <div><label for="r-name">Full name</label><input id="r-name" type="text" autocomplete="name"></div>
+      <div><label for="r-email">Email</label><input id="r-email" type="email" autocomplete="email"></div>
+      <div><label for="r-phone">Phone</label><input id="r-phone" type="tel" autocomplete="tel"></div>
+      <div><label for="r-role">Role</label><select id="r-role"><option value="">Choose a role</option>${openRoles().map(r=>`<option value="${r.id}">${esc(r.title)}</option>`).join('')}</select></div>
+      <div class="full"><label for="r-exp">Your relevant experience</label><textarea id="r-exp" placeholder="A few sentences about your experience for this role"></textarea><div class="hint">At least 40 characters.</div></div>
+      <div class="full"><label for="r-av">Preferred interview time</label><select id="r-av"><option>Morning</option><option>Mid-morning</option><option>Late morning</option><option>Any time</option></select></div>
+    </div><p class="err hidden" id="r-err" role="alert"></p>
+    <div class="row" style="margin-top:14px"><button class="btn gold" type="submit">Register</button><span class="hint">Your information is only used for this hiring event.</span></div></form>`;
+    $('#regf').addEventListener('submit',async ev=>{ev.preventDefault();const v=id=>$('#'+id).value;const err=$('#r-err');
+      const p={name:v('r-name'),email:v('r-email'),phone:v('r-phone'),roleId:v('r-role'),experience:v('r-exp'),availability:v('r-av')};
+      const miss=[];if(p.name.trim().length<2)miss.push('your name');if(!emailOK(p.email.trim()))miss.push('a valid email');if(!p.roleId)miss.push('a role');if(p.experience.trim().length<40)miss.push('at least 40 characters about your experience');
+      if(miss.length){err.textContent='Please add '+miss.join(', ')+'.';err.classList.remove('hidden');return}
+      err.classList.add('hidden');const b=ev.submitter||$('#regf button[type=submit]');b.disabled=true;b.innerHTML='<span class="spin"></span> Registering…';
+      try{const r=await A.register(p);
+        if(r.dup){err.textContent='This email is already registered for this event. Use your check-in code, or ask the front desk.';err.classList.remove('hidden');b.disabled=false;b.textContent='Register';return}
+        if(r.busy){err.textContent='Please try again in a moment.';err.classList.remove('hidden');b.disabled=false;b.textContent='Register';return}
+        this.done(r.rec);
+      }catch(x){console.error(x);err.textContent='Registration couldn’t be saved. Check your connection and try again.';err.classList.remove('hidden');b.disabled=false;b.textContent='Register'}});},
+  done(rec){$('#regpanel').innerHTML=`<div class="confirm"><span class="pill p-completed">You're registered</span>
+    <p class="muted" style="margin:14px 0 0">Your check-in code</p><div class="code">${esc(rec.code)}</div>
+    <p style="margin:0 0 6px"><b>${esc(rec.name)}</b> · ${esc(roleOf(rec.roleId).title)}</p>
+    <p class="muted" style="margin:0 0 20px">${esc(event().dateLabel)} · ${esc(event().venue)}<br>Show this code at the front desk when you arrive.</p>
+    <button class="btn ghost" id="again">Register another candidate</button></div>`;$('#again').onclick=()=>this.form();toast('Registration saved. It’s now live on every screen.')},
+  update(){const n=S.candidates.length;$('#regcount')&&($('#regcount').textContent=`${n} candidate${n===1?'':'s'} registered so far.`)}
+};
+
+/* ---- Front desk ---- */
+V.desk={
+  q:'',
+  mount(){$('#main').innerHTML=`<div class="vhead"><div><h1>Front desk</h1><p class="sub">Search by name, email, or check-in code. Press Enter on an exact code to check in instantly.</p></div>
+    <button class="btn ghost" id="wbtn">+ Walk-in candidate</button></div>
+    <div class="stats3" id="dstats"></div>
+    <div class="grid2"><section class="panel">
+      <input type="search" class="bigsearch" id="dq" placeholder="Search or enter code, e.g. TSA-4K7Q" aria-label="Search candidates" autocomplete="off" value="${esc(this.q)}">
+      <div id="dres" style="margin-top:8px"></div></section>
+    <section><div class="panel hidden" id="wpanel"></div><div class="panel" style="margin-top:0" id="arrivals"></div></section></div>`;
+    const q=$('#dq');q.focus();q.addEventListener('input',()=>{this.q=q.value;this.update()});
+    q.addEventListener('keydown',async e=>{if(e.key!=='Enter')return;const v=q.value.trim().toUpperCase();const c=S.candidates.find(x=>x.code===v);
+      if(c){await doCheckIn(c.id);q.value='';this.q='';this.update()}});
+    $('#wbtn').onclick=()=>this.walkin();this.update()},
+  walkin(){const e=event(),p=$('#wpanel');p.classList.remove('hidden');p.style.marginBottom='16px';
+    p.innerHTML=`<div class="row"><h2 style="margin:0">Walk-in registration</h2><span class="spacer"></span><button class="linkbtn" id="wx">Cancel</button></div>
+    <p class="sub">Registers and checks them in at the same time.</p><form id="wf" novalidate><div class="fgrid">
+    <div><label for="w-name">Full name</label><input id="w-name" type="text"></div><div><label for="w-email">Email</label><input id="w-email" type="email"></div>
+    <div><label for="w-phone">Phone</label><input id="w-phone" type="tel"></div><div><label for="w-role">Role</label><select id="w-role"><option value="">Choose</option>${openRoles().map(r=>`<option value="${r.id}">${esc(r.title)}</option>`).join('')}</select></div>
+    <div class="full"><label for="w-exp">Experience notes</label><textarea id="w-exp" style="min-height:70px" placeholder="What they told you about their experience"></textarea></div></div>
+    <p class="err hidden" id="w-err" role="alert"></p><div class="row" style="margin-top:12px"><button class="btn" type="submit">Register &amp; check in</button></div></form>`;
+    $('#wx').onclick=()=>p.classList.add('hidden');$('#w-name').focus();
+    $('#wf').addEventListener('submit',async ev=>{ev.preventDefault();const v=id=>$('#'+id).value,err=$('#w-err');
+      const d={name:v('w-name'),email:v('w-email'),phone:v('w-phone'),roleId:v('w-role'),experience:v('w-exp')||'Walk-in candidate; experience to be discussed in interview.',availability:'Any time',walkin:true};
+      if(d.name.trim().length<2||!emailOK(d.email.trim())||!d.roleId){err.textContent='Add a name, a valid email, and a role.';err.classList.remove('hidden');return}
+      try{const r=await A.register(d);if(r.dup){err.textContent='That email is already registered. Search for them and check them in instead.';err.classList.remove('hidden');return}
+        p.classList.add('hidden');toast(`${d.name.trim()} registered and checked in · ${r.rec.code}`)}catch(x){err.textContent='Couldn’t save. Try again.';err.classList.remove('hidden')}})},
+  update(){const c=S.candidates;if(!$('#dstats'))return;
+    const arr=c.filter(x=>x.status!=='registered').length;
+    $('#dstats').innerHTML=`<div class="stat"><div class="v">${arr}</div><div class="l">Arrived</div></div><div class="stat"><div class="v">${c.length-arr}</div><div class="l">Not arrived</div></div><div class="stat"><div class="v">${c.filter(x=>x.source==='walk-in').length}</div><div class="l">Walk-ins</div></div>`;
+    const q=this.q.trim().toLowerCase();
+    let list=c.slice().sort((a,b)=>(a.status==='registered'?0:1)-(b.status==='registered'?0:1)||a.name.localeCompare(b.name));
+    if(q)list=list.filter(x=>x.name.toLowerCase().includes(q)||x.email.includes(q)||x.code.toLowerCase().includes(q));
+    $('#dres').innerHTML=list.length?list.slice(0,40).map(x=>`<div class="person"><div class="avatar">${esc(initials(x.name))}</div>
+      <div class="who"><b>${esc(x.name)}</b><small>${esc(roleOf(x.roleId).title)} · ${esc(x.code)}</small></div>
+      ${x.status==='registered'?`<button class="btn sm" data-act="checkin" data-id="${esc(x.id)}">Check in</button>`:`<span class="pill p-checked_in">✓ Checked in ${tFmt(x.checkedInAt)}</span>`}</div>`).join('')
+      :`<div class="empty">No one matches “${esc(this.q)}”. Use <b>Walk-in candidate</b> to register them now.</div>`;
+    const recent=c.filter(x=>x.checkedInAt).sort((a,b)=>b.checkedInAt.localeCompare(a.checkedInAt)).slice(0,8);
+    $('#arrivals').innerHTML=`<h2>Latest arrivals</h2>${recent.length?`<ul class="feed">${recent.map(x=>`<li><time>${tFmt(x.checkedInAt)}</time><span><b>${esc(x.name)}</b> · ${esc(roleOf(x.roleId).title)}${x.source==='walk-in'?' · walk-in':''}</span></li>`).join('')}</ul>`:'<p class="muted">No arrivals yet.</p>'}`}
+};
+async function doCheckIn(id){const r=await A.checkIn(id);
+  if(r.already)toast(`${r.c.name} is already checked in (${tFmt(r.at)}).`);else if(r.ok)toast(`${r.c.name} checked in · added to the interview queue.`);else toast(r.err,true)}
+
+/* ---- Scheduler ---- */
+V.sched={
+  pick:{},
+  mount(){$('#main').innerHTML=`<div class="vhead"><div><h1>Interview scheduler</h1><p class="sub">Assign waiting candidates to open slots. Double-booking and role mismatches are blocked automatically.</p></div>
+    <button class="btn gold" id="auto">Auto-assign everyone waiting</button></div><div class="sched"><section class="panel" id="queue"></section><section class="panel scroll" id="board"></section></div>`;
+    $('#auto').onclick=async()=>{const b=$('#auto');b.disabled=true;b.innerHTML='<span class="spin"></span> Assigning…';
+      try{const r=await A.autoAssign();toast(r.n?`Scheduled ${r.n} candidate${r.n>1?'s':''}${r.skipped?` · ${r.skipped} waiting for a matching slot`:''}.`:r.skipped?'No open slots match the waiting candidates’ roles.':'Nobody is waiting.')}
+      finally{b.disabled=false;b.textContent='Auto-assign everyone waiting'}};
+    this.update()},
+  update(){if(!$('#queue'))return;const e=event();
+    const waiting=S.candidates.filter(c=>c.status==='checked_in'&&!c.slotId).sort((a,b)=>(a.checkedInAt||'').localeCompare(b.checkedInAt||''));
+    $('#queue').innerHTML=`<h2>Waiting room <span class="muted" style="font-family:var(--sans);font-size:.9rem">(${waiting.length})</span></h2>${waiting.length?waiting.map(c=>{
+      const opts=S.slots.filter(s=>!s.candidateId&&ivOf(s.interviewerId).roleIds?.includes(c.roleId)).sort((a,b)=>a.time.localeCompare(b.time));
+      const sel=this.pick[c.id]&&opts.some(o=>o.id===this.pick[c.id])?this.pick[c.id]:(opts[0]?.id||'');
+      return `<div class="qitem"><b>${esc(c.name)}</b><span class="muted" style="font-size:.84rem">${esc(roleOf(c.roleId).title)} · arrived ${tFmt(c.checkedInAt)}</span>
+      <div class="row">${opts.length?`<select data-pick="${esc(c.id)}" aria-label="Slot for ${esc(c.name)}">${opts.map(s=>`<option value="${s.id}" ${s.id===sel?'selected':''}>${slotFmt(s.time)} · ${esc(ivOf(s.interviewerId).name)}</option>`).join('')}</select>
+      <button class="btn sm" data-act="assign" data-id="${esc(c.id)}">Assign</button>`:'<span class="hint">No open slots for this role.</span>'}</div></div>`}).join(''):'<div class="empty">Nobody is waiting. Checked-in candidates appear here.</div>'}`;
+    const ivs=e.interviewers,times=[...new Set(S.slots.map(s=>s.time))].sort();
+    $('#board').innerHTML=`<h2>Schedule</h2><div class="sgrid" style="grid-template-columns:64px repeat(${ivs.length},minmax(170px,1fr))">
+      <div></div>${ivs.map(i=>`<div class="h">${esc(i.name)}<small>${esc(i.room)} · ${esc(i.roleIds.map(r=>roleOf(r).title).join(', '))}</small></div>`).join('')}
+      ${times.map(t=>`<div class="t">${slotFmt(t)}</div>${ivs.map(i=>{const s=S.slots.find(x=>x.time===t&&x.interviewerId===i.id);if(!s)return'<div></div>';
+        if(!s.candidateId)return `<div class="cell">Open</div>`;const c=cand(s.candidateId);
+        const lab={booked:'Booked',in_progress:'In interview',done:'Completed'}[s.status];
+        return `<div class="cell ${s.status}"><b>${esc(c?.name||'Removed')}</b><span>${esc(c?roleOf(c.roleId).title:'')} · ${lab}</span>${s.status==='booked'?`<div class="row"><button class="linkbtn" data-act="unassign" data-slot="${s.id}">Unassign</button></div>`:''}</div>`}).join('')}`).join('')}</div>`;
+    $$('[data-pick]').forEach(sel=>sel.onchange=()=>{this.pick[sel.dataset.pick]=sel.value})}
+};
+
+/* ---- Interviewer ---- */
+V.iv={
+  ivId:null,slotId:null,panelKey:'',
+  mount(){const e=event();if(!e.interviewers.length){$('#main').innerHTML='<div class="panel empty">No interviewers yet. Add your interview panel in <b>Setup</b>.</div>';return}this.ivId=pref('iv-'+EV)||e.interviewers[0].id;if(!e.interviewers.some(i=>i.id===this.ivId))this.ivId=e.interviewers[0].id;this.panelKey='';
+    $('#main').innerHTML=`<div class="vhead"><div><h1>Interviewer workspace</h1><p class="sub">Your interviews for today, AI briefings, and scorecards.</p></div>
+      <div style="min-width:240px"><label for="ivsel">Signed in as</label><select id="ivsel">${e.interviewers.map(i=>`<option value="${i.id}" ${i.id===this.ivId?'selected':''}>${esc(i.name)} · ${esc(i.room)}</option>`).join('')}</select></div></div>
+      <div class="grid2" style="grid-template-columns:340px 1fr"><section class="panel"><h2>My interviews</h2><div class="slotlist" id="myslots"></div></section><section id="ivpanel"></section></div>`;
+    $('#ivsel').onchange=e=>{this.ivId=e.target.value;pref('iv-'+EV,this.ivId);this.slotId=null;this.panelKey='';this.update()};
+    this.update()},
+  update(){if(!$('#myslots'))return;
+    const mine=S.slots.filter(s=>s.interviewerId===this.ivId&&s.candidateId).sort((a,b)=>a.time.localeCompare(b.time));
+    if(!this.slotId||!mine.some(s=>s.id===this.slotId))this.slotId=(mine.find(s=>s.status==='in_progress')||mine.find(s=>s.status==='booked')||mine[0])?.id||null;
+    const lab={booked:'Up next',in_progress:'In progress',done:'Scored'};
+    $('#myslots').innerHTML=mine.length?mine.map(s=>{const c=cand(s.candidateId);return `<button class="slot" data-act="pickslot" data-slot="${s.id}" aria-current="${s.id===this.slotId}"><span class="tm">${slotFmt(s.time)}</span><span class="who"><b>${esc(c?.name||'')}</b><small>${esc(c?roleOf(c.roleId).title:'')}</small></span><span class="pill ${s.status==='done'?'p-completed':s.status==='in_progress'?'p-interviewing':'p-checked_in'}">${lab[s.status]}</span></button>`}).join('')
+      :'<div class="empty">No interviews assigned yet. They appear here as soon as the scheduler books them.</div>';
+    this.panel()},
+  panel(){const p=$('#ivpanel');const s=S.slots.find(x=>x.id===this.slotId);
+    if(!s){p.innerHTML='<div class="panel empty">Select an interview to see the candidate.</div>';this.panelKey='';return}
+    const c=cand(s.candidateId);if(!c)return;
+    const key=s.id+'|'+s.status;
+    if(key!==this.panelKey){this.panelKey=key;
+      p.innerHTML=`<div class="panel" style="margin-bottom:14px"><div class="row"><div class="avatar">${esc(initials(c.name))}</div><div><h2 style="margin:0">${esc(c.name)}</h2><span class="muted">${esc(roleOf(c.roleId).title)} · ${slotFmt(s.time)} · ${esc(ivOf(s.interviewerId).room)}</span></div><span class="spacer"></span><span id="ivpills">${pill(c)}</span></div>
+        <p class="quote">${esc(c.experience)}</p>
+        ${s.status==='booked'?`<div class="row" style="margin-top:14px"><button class="btn gold" data-act="start" data-slot="${s.id}">Start interview</button><span class="hint">Starting marks them as in the room on every screen.</span></div>`:''}</div>
+        <div id="ivai" style="margin-bottom:14px"></div><div id="ivscore"></div>`;
+      this.score(s,c)}
+    $('#ivai').innerHTML=aiBlock(c);$('#ivpills')&&($('#ivpills').innerHTML=pill(c))},
+  score(s,c){const box=$('#ivscore');
+    if(s.status==='booked'){box.innerHTML='';return}
+    const existing=S.scorecards.find(x=>x.candidateId===c.id&&x.interviewerId===s.interviewerId);
+    if(s.status==='done'&&existing){box.innerHTML=`<div class="panel"><h2>Your scorecard</h2>${scoreCard(existing)}</div>`;return}
+    box.innerHTML=`<form class="panel" id="scf" novalidate><h2>Scorecard</h2><p class="sub">Rate each area on job-related evidence from the interview.</p><div class="rate">
+      ${COMP.map(([k,l])=>`<div class="rq"><b>${l}</b><div class="scale" role="radiogroup" aria-label="${l}">${[1,2,3,4].map(n=>`<input type="radio" name="r-${k}" id="r-${k}-${n}" value="${n}"><label for="r-${k}-${n}">${n} · ${SCALE[n]}</label>`).join('')}</div></div>`).join('')}
+      <div><label for="sc-notes">Evidence-based notes</label><textarea id="sc-notes" placeholder="What did they say or show that supports your ratings?"></textarea></div>
+      <div class="rq"><b>Recommendation</b><div class="scale">${Object.entries(REC).map(([k,v])=>`<input type="radio" name="rec" id="rec-${k}" value="${k}"><label for="rec-${k}">${v}</label>`).join('')}</div></div></div>
+      <p class="err hidden" id="sc-err" role="alert"></p><div class="row" style="margin-top:14px"><button class="btn gold" type="submit">Submit scorecard</button><span class="hint">The hiring lead sees it instantly.</span></div></form>`;
+    $('#scf').addEventListener('submit',async e=>{e.preventDefault();const err=$('#sc-err');const ratings={};let miss=0;
+      COMP.forEach(([k])=>{const v=$(`input[name="r-${k}"]:checked`);if(v)ratings[k]=Number(v.value);else miss++});
+      const rec=$('input[name="rec"]:checked'),notes=$('#sc-notes').value.trim();
+      if(miss||!rec||notes.length<20){err.textContent=`Please ${[miss?'rate every area':'',!rec?'choose a recommendation':'',notes.length<20?'add at least 20 characters of notes':''].filter(Boolean).join(', ')}.`;err.classList.remove('hidden');return}
+      const b=e.submitter||$('#scf button[type=submit]');b.disabled=true;b.innerHTML='<span class="spin"></span> Submitting…';
+      const r=await A.submitScore(s.id,s.interviewerId,{ratings,notes,recommendation:rec.value});
+      if(r.ok)toast('Scorecard submitted.');else{toast(r.err,true);b.disabled=false;b.textContent='Submit scorecard'}})}
+};
+function scoreCard(sc){const avg=(Object.values(sc.ratings).reduce((a,b)=>a+b,0)/COMP.length).toFixed(1);
+  return `<div class="sc"><div class="row"><b>${esc(ivOf(sc.interviewerId).name)}</b><span class="muted">${tFmt(sc.submittedAt)}</span><span class="spacer"></span><span class="pill ${/yes/.test(sc.recommendation)?'p-completed':'p-decline'}">${REC[sc.recommendation]}</span></div>
+  <div class="grid">${COMP.map(([k,l])=>`<div><b>${sc.ratings[k]}</b><small>${l.split(' ')[0].replace('&amp;','')}</small></div>`).join('')}</div>
+  <div class="muted" style="font-size:.82rem;margin-bottom:6px">Average ${avg} / 4</div><div>${esc(sc.notes)}</div></div>`}
+
+/* ---- Command center ---- */
+V.cmd={
+  f:'all',q:'',
+  mount(){$('#main').innerHTML=`<div class="vhead"><div><h1>Hiring command center</h1><p class="sub">Everything happening at ${esc(event().org)} ${esc(event().name)}, live.</p></div>
+    <div class="row"><button class="btn ghost" id="clr">Clear test candidates</button>${store.mode==='local'?'<button class="btn ghost" id="rst">Reset demo</button>':''}<button class="btn" id="csv">Export CSV</button></div></div>
+    <div class="kpis" id="kpis"></div>
+    <div class="grid2"><section class="panel"><div class="row" style="margin-bottom:10px"><h2 style="margin:0">Candidates</h2><span class="spacer"></span>
+      <select id="cf" style="width:auto"><option value="all">All</option><option value="registered">Not arrived</option><option value="checked_in">Waiting</option><option value="interviewing">Interviewing</option><option value="completed">Interviewed</option><option value="pending">Needs decision</option><option value="advance">Advanced</option></select>
+      <input type="search" id="cq" placeholder="Search" style="width:160px" aria-label="Search candidates"></div><div class="scroll" id="ctable"></div></section>
+    <section><div class="panel" style="margin-bottom:16px"><h2>Pipeline by role</h2><div id="roles"></div></div><div class="panel"><h2>Live activity</h2><ul class="feed" id="feed"></ul></div></section></div>`;
+    $('#cf').value=this.f;$('#cq').value=this.q;$('#cf').onchange=e=>{this.f=e.target.value;this.update()};$('#cq').oninput=e=>{this.q=e.target.value;this.update()};
+    $('#csv').onclick=exportCSV;
+    $('#clr').onclick=async()=>{const n=S.candidates.filter(c=>c.createdLive).length;if(!n){toast('No test candidates to clear.');return}
+      if(!confirm(`Remove ${n} candidate${n>1?'s':''} added during demos, and free their slots?`))return;
+      try{await A.clearTest();toast(`Cleared ${n} test candidate${n>1?'s':''}.`)}catch(e){toast('Couldn’t clear. You may not have edit access.',true)}};
+    $('#rst')&&($('#rst').onclick=()=>{if(confirm('Reset the demo to its starting state?')){store.reset();toast('Demo reset.')}});
+    this.update()},
+  update(){if(!$('#kpis'))return;const c=S.candidates;
+    const k=[['Registered',c.length],['Checked in',c.filter(x=>x.status!=='registered').length],['Not arrived',c.filter(x=>x.status==='registered').length],['Waiting',c.filter(x=>x.status==='checked_in').length],['Interviewing',c.filter(x=>x.status==='interviewing').length],['Interviewed',c.filter(x=>x.status==='completed').length],['Advanced',c.filter(x=>x.decision==='advance').length]];
+    $('#kpis').innerHTML=k.map(([l,v],i)=>`<div class="kpi ${i===6?'hl':''}"><div class="v">${v}</div><div class="l">${l}</div></div>`).join('');
+    const q=this.q.trim().toLowerCase();
+    let list=c.filter(x=>this.f==='all'||(this.f==='pending'?x.status==='completed'&&!x.decision:this.f==='advance'?x.decision==='advance':x.status===this.f));
+    if(q)list=list.filter(x=>x.name.toLowerCase().includes(q)||roleOf(x.roleId).title.toLowerCase().includes(q));
+    const ord={interviewing:0,checked_in:1,completed:2,registered:3};list.sort((a,b)=>ord[a.status]-ord[b.status]||a.name.localeCompare(b.name));
+    $('#ctable').innerHTML=list.length?`<table><thead><tr><th>Candidate</th><th>Role</th><th>Status</th><th>Interview</th></tr></thead><tbody>${list.map(x=>{const s=slotOf(x);const sc=S.scorecards.filter(y=>y.candidateId===x.id);
+      return `<tr class="click" data-act="open" data-id="${esc(x.id)}" tabindex="0"><td><b>${esc(x.name)}</b><div class="hint" style="margin:0">${esc(x.code)}</div></td><td>${esc(roleOf(x.roleId).title)}</td><td>${pill(x)}</td><td class="muted">${s?`${slotFmt(s.time)} · ${esc(ivOf(s.interviewerId).name.split(' ')[0])}`:'—'}${sc.length?` · ${REC[sc[0].recommendation]}`:''}</td></tr>`}).join('')}</tbody></table>`:'<div class="empty">No candidates match.</div>';
+    $('#roles').innerHTML=event().roles.map(r=>{const rc=c.filter(x=>x.roleId===r.id);const a=rc.filter(x=>x.status!=='registered').length,i=rc.filter(x=>x.status==='completed').length,adv=rc.filter(x=>x.decision==='advance').length;
+      return `<div style="margin-bottom:12px"><div class="row" style="font-size:.88rem"><b>${esc(r.title)}</b><span class="spacer"></span><span class="muted">${rc.length} reg · ${a} arrived · ${i} interviewed · <b style="color:var(--ok)">${adv} advanced</b></span></div><div class="bar"><i style="width:${rc.length?Math.round(i/rc.length*100):0}%"></i></div></div>`}).join('');
+    const ev=[];c.forEach(x=>{const r=roleOf(x.roleId).title;
+      if(x.registeredAt)ev.push([x.registeredAt,`<b>${esc(x.name)}</b> ${x.source==='walk-in'?'registered as a walk-in':'registered'} for ${esc(r)}`]);
+      if(x.checkedInAt&&x.source!=='walk-in')ev.push([x.checkedInAt,`<b>${esc(x.name)}</b> checked in`]);
+      if(x.interviewStartedAt)ev.push([x.interviewStartedAt,`<b>${esc(x.name)}</b> started interview with ${esc(ivOf(slotOf(x)?.interviewerId).name)}`]);
+      if(x.completedAt)ev.push([x.completedAt,`Scorecard submitted for <b>${esc(x.name)}</b>`]);
+      if(x.decidedAt&&x.decision)ev.push([x.decidedAt,`<b>${esc(x.name)}</b> marked <b>${DEC[x.decision]}</b>`])});
+    ev.sort((a,b)=>b[0].localeCompare(a[0]));
+    $('#feed').innerHTML=ev.slice(0,14).map(([t,h])=>`<li><time>${tFmt(t)}</time><span>${h}</span></li>`).join('')||'<li class="muted">No activity yet.</li>'}
+};
+function exportCSV(){const rows=[['Name','Email','Phone','Role','Check-in code','Status','Source','Registered','Checked in','Interviewer','Slot','Recommendations','Decision']];
+  S.candidates.forEach(c=>{const s=slotOf(c);rows.push([c.name,c.email,c.phone,roleOf(c.roleId).title,c.code,STATUS[c.status],c.source,tFmt(c.registeredAt),tFmt(c.checkedInAt),s?ivOf(s.interviewerId).name:'',s?slotFmt(s.time):'',S.scorecards.filter(x=>x.candidateId===c.id).map(x=>REC[x.recommendation]).join('; '),c.decision?DEC[c.decision]:''])});
+  const csv=rows.map(r=>r.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(',')).join('\r\n');
+  const name=`${EV}-candidates.csv`;
+  if(downloads){downloads.save({filename:name,data:csv}).then(r=>{if(r.status==='saved')toast('CSV saved.')}).catch(e=>{if(e&&e.code!=='declined')toast('Couldn’t save the file here.',true)})}
+  else{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download=name;document.body.appendChild(a);a.click();a.remove();toast('CSV downloaded.')}}
+
+/* ---- Candidate drawer ---- */
+const Drawer={
+  open(id){drawerId=id;drawerMode='cand';const d=$('#drawer');d.classList.add('on');d.setAttribute('aria-hidden','false');$('#scrim').classList.add('on');
+    d.innerHTML=`<div class="dh"><div class="avatar" id="dav"></div><div style="flex:1;min-width:0"><h2 style="margin:0" id="dname"></h2><div class="muted" id="drole"></div><div id="dpills" style="margin-top:6px"></div></div><button class="btn ghost sm" data-act="close" aria-label="Close">Close</button></div>
+    <div class="db"><div class="panel"><h3>Application</h3><div id="dapp"></div></div><div id="dtl" class="panel"></div><div id="dai"></div><div id="dsc"></div>
+    <div class="panel"><h3>Decision</h3><p class="hint" style="margin:0 0 10px">Made by the hiring lead after reviewing scorecards. AI does not decide.</p><div class="decide" id="ddec"></div></div>
+    <div class="panel"><h3>Follow-up email</h3><p class="hint" style="margin:0 0 10px">AI drafts it from the decision. Review and edit before sending.</p><textarea id="demail" style="min-height:180px" placeholder="Make a decision, then draft the email."></textarea>
+    <div class="row" style="margin-top:10px"><button class="btn gold sm" id="dmk">Draft with AI</button><button class="btn ghost sm" id="dcp">Copy</button></div></div></div>`;
+    $('#dmk').onclick=()=>draftEmail(id);$('#dcp').onclick=async()=>{try{await navigator.clipboard.writeText($('#demail').value);toast('Email copied.')}catch(e){toast('Select the text and copy it.',true)}};
+    this.update();setTimeout(()=>$('[data-act="close"]',d).focus(),50)},
+  close(){drawerId=null;drawerMode=null;promoRole=null;const d=$('#drawer');d.classList.remove('on');d.setAttribute('aria-hidden','true');$('#scrim').classList.remove('on')},
+  update(){const c=cand(drawerId);if(!c){this.close();return}const s=slotOf(c);
+    $('#dav').textContent=initials(c.name);$('#dname').textContent=c.name;$('#drole').textContent=`${roleOf(c.roleId).title} · ${c.code}`;$('#dpills').innerHTML=pill(c);
+    $('#dapp').innerHTML=`<p class="quote" style="margin-top:0">${esc(c.experience)}</p><p class="hint">${esc(c.email)}${c.phone?' · '+esc(c.phone):''} · Prefers ${esc(c.availability||'any time')}</p>`;
+    const tl=[[c.registeredAt,c.source==='walk-in'?'Registered as walk-in':'Registered online'],[c.checkedInAt&&c.source!=='walk-in'?c.checkedInAt:null,'Checked in'],[s?c.checkedInAt:null,s?`Scheduled ${slotFmt(s.time)} with ${ivOf(s.interviewerId).name}`:''],[c.interviewStartedAt,'Interview started'],[c.completedAt,'Scorecard submitted'],[c.decidedAt,c.decision?`Decision: ${DEC[c.decision]}`:'']].filter(x=>x[0]&&x[1]);
+    $('#dtl').innerHTML=`<h3>Timeline</h3><ul class="tl">${tl.map(([t,l])=>`<li><time>${tFmt(t)}</time><span>${esc(l)}</span></li>`).join('')}</ul>`;
+    $('#dai').innerHTML=aiBlock(c);
+    const scs=S.scorecards.filter(x=>x.candidateId===c.id);
+    $('#dsc').innerHTML=`<div class="panel"><h3>Scorecards</h3>${scs.length?scs.map(scoreCard).join(''):'<p class="muted" style="margin:0">No scorecards yet.</p>'}</div>`;
+    $('#ddec').innerHTML=Object.entries(DEC).map(([k,v])=>`<button class="btn ${k==='advance'?'':k==='hold'?'ghost':'danger'}" data-act="decide" data-d="${k}" data-id="${esc(c.id)}" aria-pressed="${c.decision===k}">${v}</button>`).join('')}
+};
+async function draftEmail(id){const c=cand(id);if(!c)return;
+  if(!sample){toast('AI email drafts run in the Claude-hosted version of this app.',true);return}
+  if(!c.decision){toast('Make a decision first, then draft the email.',true);return}
+  const b=$('#dmk'),box=$('#demail');b.disabled=true;b.innerHTML='<span class="spin"></span> Drafting…';box.value='';
+  const e=event(),what={advance:'invite them to the next step: a short follow-up conversation with the campus director next week; ask them to reply with two or three times that work',hold:'thank them and explain the team is still finishing interviews and will be in touch within a week',decline:'thank them sincerely and let them know the team will not be moving forward for this role right now, and encourage them to apply for future openings'}[c.decision];
+  try{await sample(`Write a short, warm, professional email from the ${e.org} Hiring Team to ${c.name}, who interviewed for the ${roleOf(c.roleId).title} role at our ${e.name} (${e.dateLabel}).
+Purpose: ${what}.
+Rules: under 140 words; plain text; first line must be "Subject: ..."; no salary or start-date promises; no mention of scores, AI, or other candidates; sign off as "${e.org} Hiring Team".`,
+    {cache:false,onText:({text})=>{box.value=text}})}
+  catch(x){toast(x&&x.code==='not_granted'?'AI access was declined for this session.':'Couldn’t draft the email. Try again.',true)}
+  finally{b.disabled=false;b.textContent='Draft with AI'}}
+
+/* ================= Setup: events, roles, interviewers, schedule ================= */
+const openRoles=()=>(event()?.roles||[]).filter(r=>r.status!=='closed');
+const rid=t=>slug(t).replace(/[@.+~]/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'').slice(0,40)+'-'+Math.random().toString(36).slice(2,6);
+const toMin=t=>{const[h,m]=t.split(':').map(Number);return h*60+m};
+const toHM=m=>`${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}`;
+function schedOf(e){if(e.schedule)return e.schedule;const ts=S.slots.map(s=>s.time).sort();
+  return ts.length?{start:ts[0],end:toHM(toMin(ts[ts.length-1])+30),length:30}:{start:'09:00',end:'12:00',length:30}}
+function slotTimes(sc){const out=[];for(let m=toMin(sc.start);m+Number(sc.length)<=toMin(sc.end);m+=Number(sc.length))out.push(toHM(m));return out}
+const slotId=(ev,iv,t)=>`${ev}--${iv}--${t.replace(':','')}`;
+
+Object.assign(A,{
+  async saveEvent(fields){const cur=await store.get('events',EV);const{id,...rest}=cur;await store.set('events',EV,{...rest,...fields});return{ok:true}},
+  async createEvent(f){const id=rid(f.org+' '+f.name);
+    await store.set('events',id,{name:f.name,org:f.org,concept:true,dateLabel:f.dateLabel,timeLabel:f.timeLabel,venue:f.venue,blurb:f.blurb,
+      codePrefix:(f.codePrefix||f.org.split(/\s+/).map(w=>w[0]).join('')).toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,4)||'EV',
+      schedule:f.schedule,roles:[],interviewers:[]});return{ok:true,id}},
+  async saveRole(role){const e=await store.get('events',EV);const roles=(e.roles||[]).slice();const i=roles.findIndex(r=>r.id===role.id);
+    if(i>=0)roles[i]={...roles[i],...role};else roles.push({status:'open',...role,id:role.id||rid(role.title),createdAt:nowISO()});
+    await store.update('events',EV,{roles});return{ok:true}},
+  async deleteRole(id){if(S.candidates.some(c=>c.roleId===id))return{err:'Candidates have applied for this role, so it can be closed but not deleted.'};
+    const e=await store.get('events',EV);await store.update('events',EV,{roles:(e.roles||[]).filter(r=>r.id!==id),interviewers:(e.interviewers||[]).map(i=>({...i,roleIds:i.roleIds.filter(x=>x!==id)}))});return{ok:true}},
+  async saveInterviewer(iv){const e=await store.get('events',EV);const list=(e.interviewers||[]).slice();const i=list.findIndex(x=>x.id===iv.id);
+    const isNew=i<0;const rec=isNew?{...iv,id:rid(iv.name)}:{...list[i],...iv};if(isNew)list.push(rec);else list[i]=rec;
+    await store.update('events',EV,{interviewers:list});
+    if(isNew){for(const t of slotTimes(schedOf(e)))await store.set('slots',slotId(EV,rec.id,t),{eventId:EV,interviewerId:rec.id,time:t,candidateId:null,status:'open'})}
+    return{ok:true}},
+  async removeInterviewer(id){const mine=S.slots.filter(s=>s.interviewerId===id);if(mine.some(s=>s.candidateId))return{err:'This interviewer has candidates booked. Unassign or finish those interviews first.'};
+    for(const s of mine)await store.remove('slots',s.id);const e=await store.get('events',EV);await store.update('events',EV,{interviewers:(e.interviewers||[]).filter(i=>i.id!==id)});return{ok:true}},
+  async applySchedule(sc){if(toMin(sc.end)-toMin(sc.start)<Number(sc.length))return{err:'The end time must be at least one interview length after the start.'};
+    const times=new Set(slotTimes(sc)),e=event();let added=0,removed=0,kept=0;
+    for(const iv of e.interviewers){for(const t of times){if(!S.slots.some(s=>s.interviewerId===iv.id&&s.time===t)){await store.set('slots',slotId(EV,iv.id,t),{eventId:EV,interviewerId:iv.id,time:t,candidateId:null,status:'open'});added++}}}
+    for(const s of S.slots.filter(s=>!times.has(s.time))){if(s.candidateId)kept++;else{await store.remove('slots',s.id);removed++}}
+    await store.update('events',EV,{schedule:{start:sc.start,end:sc.end,length:Number(sc.length)}});return{ok:true,added,removed,kept}},
+  async saveConfig(c){const cur=await store.get('config','main');if(cur){const{id,...rest}=cur;await store.set('config','main',{...rest,...c})}else await store.set('config','main',c);return{ok:true}}
+});
+
+let CONFIG={};
+const applyLink=()=>CONFIG.applyUrl||location.href.split('#')[0];
+
+V.setup={
+  editRole:null,editIv:null,
+  mount(){const e=event(),sc=schedOf(e);
+    $('#main').innerHTML=`<div class="vhead"><div><h1>Event setup</h1><p class="sub">Create events, open roles, and manage the interview panel. Changes go live everywhere instantly.</p></div>
+      <button class="btn ghost" id="newev">+ New event</button></div>
+    <div class="panel hidden" id="newevp" style="margin-bottom:16px"></div>
+    <div class="grid2" style="grid-template-columns:1fr 1.15fr">
+    <section style="display:grid;gap:16px">
+      <form class="panel" id="evf" novalidate><h2>Event details</h2><div class="fgrid">
+        <div><label for="e-org">Organization</label><input id="e-org" type="text" value="${esc(e.org)}"></div>
+        <div><label for="e-name">Event name</label><input id="e-name" type="text" value="${esc(e.name)}"></div>
+        <div><label for="e-date">Date</label><input id="e-date" type="text" value="${esc(e.dateLabel)}"></div>
+        <div><label for="e-time">Time</label><input id="e-time" type="text" value="${esc(e.timeLabel)}"></div>
+        <div class="full"><label for="e-venue">Location</label><input id="e-venue" type="text" value="${esc(e.venue)}"></div>
+        <div class="full"><label for="e-blurb">Description for candidates</label><textarea id="e-blurb" style="min-height:70px">${esc(e.blurb)}</textarea></div>
+      </div><div class="row" style="margin-top:12px"><button class="btn" type="submit">Save event</button></div></form>
+      <form class="panel" id="scf2" novalidate><h2>Interview schedule</h2><p class="sub">Slots are created automatically for every interviewer.</p><div class="fgrid" style="grid-template-columns:1fr 1fr 1fr">
+        <div><label for="s-start">First interview</label><input id="s-start" type="text" value="${sc.start}" placeholder="09:00"></div>
+        <div><label for="s-end">Day ends</label><input id="s-end" type="text" value="${sc.end}" placeholder="12:30"></div>
+        <div><label for="s-len">Minutes each</label><select id="s-len">${[15,20,30,45,60].map(n=>`<option ${n==sc.length?'selected':''}>${n}</option>`).join('')}</select></div>
+      </div><p class="hint">24-hour time, e.g. 09:00 and 13:30. Booked interviews are never removed.</p><div class="row" style="margin-top:12px"><button class="btn" type="submit">Update schedule</button><span class="hint" id="slotcount"></span></div></form>
+      <form class="panel" id="intf" novalidate><h2>Integrations</h2><p class="sub">Connect an automation so “Publish to all channels” posts everywhere at once.</p>
+        <label for="i-hook">Make or Zapier webhook URL</label><input id="i-hook" type="text" placeholder="https://hook.us1.make.com/…" value="${esc(CONFIG.webhookUrl||'')}">
+        <div class="hint">In Make: create a scenario that starts with a Webhook, then add Facebook Pages, Instagram, and LinkedIn modules using the fields this app sends.</div>
+        <label for="i-apply" style="margin-top:12px">Public apply link (used in posts)</label><input id="i-apply" type="text" placeholder="${esc(location.href.split('#')[0])}" value="${esc(CONFIG.applyUrl||'')}">
+        <div class="row" style="margin-top:12px"><button class="btn" type="submit">Save integrations</button></div></form>
+    </section>
+    <section style="display:grid;gap:16px">
+      <div class="panel"><div class="row"><h2 style="margin:0">Roles</h2><span class="spacer"></span><button class="btn gold sm" id="addrole">+ Add role</button></div><div id="roleform"></div><div id="rolelist" style="margin-top:10px"></div></div>
+      <div class="panel"><div class="row"><h2 style="margin:0">Interview panel</h2><span class="spacer"></span><button class="btn sm" id="addiv">+ Add interviewer</button></div><div id="ivform"></div><div id="ivlist" style="margin-top:10px"></div></div>
+    </section></div>`;
+    $('#evf').addEventListener('submit',async ev=>{ev.preventDefault();const v=id=>$('#'+id).value.trim();
+      if(!v('e-org')||!v('e-name'))return toast('Organization and event name are required.',true);
+      await A.saveEvent({org:v('e-org'),name:v('e-name'),dateLabel:v('e-date'),timeLabel:v('e-time'),venue:v('e-venue'),blurb:v('e-blurb')});toast('Event saved.')});
+    $('#scf2').addEventListener('submit',async ev=>{ev.preventDefault();const st=$('#s-start').value.trim(),en=$('#s-end').value.trim();
+      if(!/^\d{2}:\d{2}$/.test(st)||!/^\d{2}:\d{2}$/.test(en))return toast('Use 24-hour times like 09:00.',true);
+      const r=await A.applySchedule({start:st,end:en,length:Number($('#s-len').value)});
+      r.ok?toast(`Schedule updated · ${r.added} slots added, ${r.removed} removed${r.kept?`, ${r.kept} booked kept`:''}.`):toast(r.err,true)});
+    $('#intf').addEventListener('submit',async ev=>{ev.preventDefault();const h=$('#i-hook').value.trim(),a=$('#i-apply').value.trim();
+      if(h&&!/^https:\/\//.test(h))return toast('The webhook URL should start with https://',true);
+      await A.saveConfig({webhookUrl:h,applyUrl:a});toast('Integrations saved.')});
+    $('#addrole').onclick=()=>this.roleForm(null);$('#addiv').onclick=()=>this.ivForm(null);
+    $('#newev').onclick=()=>this.newEvent();
+    this.update()},
+  newEvent(){const p=$('#newevp');p.classList.remove('hidden');
+    p.innerHTML=`<form id="nef" novalidate><div class="row"><h2 style="margin:0">New event</h2><span class="spacer"></span><button type="button" class="linkbtn" id="nex">Cancel</button></div><div class="fgrid" style="margin-top:12px">
+      <div><label for="n-org">Organization</label><input id="n-org" type="text" value="${esc(event().org)}"></div><div><label for="n-name">Event name</label><input id="n-name" type="text" placeholder="e.g. Coaches Hiring Day"></div>
+      <div><label for="n-date">Date</label><input id="n-date" type="text" placeholder="Saturday, January 16, 2027"></div><div><label for="n-time">Time</label><input id="n-time" type="text" placeholder="9:00 AM – 1:00 PM"></div>
+      <div class="full"><label for="n-venue">Location</label><input id="n-venue" type="text" placeholder="City, State"></div>
+      <div class="full"><label for="n-blurb">Description</label><input id="n-blurb" type="text" placeholder="One or two sentences for candidates"></div></div>
+      <div class="row" style="margin-top:12px"><button class="btn gold" type="submit">Create event</button><span class="hint">Then add roles and interviewers.</span></div></form>`;
+    $('#nex').onclick=()=>p.classList.add('hidden');$('#n-name').focus();
+    $('#nef').addEventListener('submit',async ev=>{ev.preventDefault();const v=id=>$('#'+id).value.trim();
+      if(!v('n-org')||!v('n-name')||!v('n-date'))return toast('Add an organization, event name, and date.',true);
+      const r=await A.createEvent({org:v('n-org'),name:v('n-name'),dateLabel:v('n-date'),timeLabel:v('n-time')||'9:00 AM – 12:00 PM',venue:v('n-venue')||'TBD',blurb:v('n-blurb')||'Interview on the spot and leave knowing your next step.',schedule:{start:'09:00',end:'12:00',length:30}});
+      await sleep(250);EV=r.id;pref('ev',EV);$('#evsel').value=EV;subscribeEvent();show('setup');toast('Event created. Add roles and interviewers next.')})},
+  roleForm(id){const r=id?roleOf(id):{title:'',team:'',type:'Full-time',pay:'',summary:'',requirements:[]};this.editRole=id;
+    $('#roleform').innerHTML=`<form class="qitem" id="rf" novalidate style="margin-top:12px"><div class="fgrid">
+      <div><label for="rf-title">Role title</label><input id="rf-title" type="text" value="${esc(r.title)}" placeholder="e.g. Basketball Coach"></div>
+      <div><label for="rf-team">Team</label><input id="rf-team" type="text" value="${esc(r.team)}" placeholder="e.g. Athletics"></div>
+      <div><label for="rf-type">Type</label><select id="rf-type">${['Full-time','Part-time','Contract','Internship','Seasonal'].map(t=>`<option ${t===r.type?'selected':''}>${t}</option>`).join('')}</select></div>
+      <div><label for="rf-pay">Pay (optional)</label><input id="rf-pay" type="text" value="${esc(r.pay||'')}" placeholder="e.g. $25/hour"></div>
+      <div class="full"><label for="rf-sum">One-line summary</label><input id="rf-sum" type="text" value="${esc(r.summary)}"></div>
+      <div class="full"><label for="rf-req">Requirements (one per line)</label><textarea id="rf-req" style="min-height:90px">${esc((r.requirements||[]).join('\n'))}</textarea></div></div>
+      <div class="row" style="margin-top:12px"><button class="btn gold sm" type="submit">${id?'Save role':'Open role'}</button><button type="button" class="btn ghost sm" id="rfx">Cancel</button></div></form>`;
+    $('#rfx').onclick=()=>{$('#roleform').innerHTML='';this.editRole=null};$('#rf-title').focus();
+    $('#rf').addEventListener('submit',async ev=>{ev.preventDefault();const v=x=>$('#'+x).value.trim();
+      const reqs=v('rf-req').split('\n').map(x=>x.trim()).filter(Boolean);
+      if(!v('rf-title')||!v('rf-sum')||!reqs.length)return toast('Add a title, a summary, and at least one requirement.',true);
+      await A.saveRole({...(id?{id}:{}),title:v('rf-title'),team:v('rf-team')||'General',type:v('rf-type'),pay:v('rf-pay'),summary:v('rf-sum'),requirements:reqs});
+      $('#roleform').innerHTML='';this.editRole=null;toast(id?'Role updated.':'Role opened. It’s live on the registration page.')})},
+  ivForm(id){const e=event(),iv=id?ivOf(id):{name:'',title:'',room:'',roleIds:[]};this.editIv=id;
+    $('#ivform').innerHTML=`<form class="qitem" id="ivf" novalidate style="margin-top:12px"><div class="fgrid">
+      <div><label for="iv-name">Name</label><input id="iv-name" type="text" value="${esc(iv.name)}"></div>
+      <div><label for="iv-title">Title</label><input id="iv-title" type="text" value="${esc(iv.title)}"></div>
+      <div class="full"><label for="iv-room">Room or table</label><input id="iv-room" type="text" value="${esc(iv.room)}" placeholder="e.g. Room D"></div>
+      <div class="full"><label>Interviews for</label><div class="scale">${e.roles.map(r=>`<input type="checkbox" id="ivr-${r.id}" value="${r.id}" ${iv.roleIds.includes(r.id)?'checked':''}><label for="ivr-${r.id}">${esc(r.title)}</label>`).join('')||'<span class="hint">Add a role first.</span>'}</div></div></div>
+      <div class="row" style="margin-top:12px"><button class="btn sm" type="submit">${id?'Save':'Add to panel'}</button><button type="button" class="btn ghost sm" id="ivx">Cancel</button></div></form>`;
+    $('#ivx').onclick=()=>{$('#ivform').innerHTML='';this.editIv=null};$('#iv-name').focus();
+    $('#ivf').addEventListener('submit',async ev=>{ev.preventDefault();const v=x=>$('#'+x).value.trim();const roleIds=$$('#ivf input[type=checkbox]:checked').map(x=>x.value);
+      if(!v('iv-name')||!roleIds.length)return toast('Add a name and at least one role.',true);
+      await A.saveInterviewer({...(id?{id}:{}),name:v('iv-name'),title:v('iv-title')||'Interviewer',room:v('iv-room')||'TBD',roleIds});
+      $('#ivform').innerHTML='';this.editIv=null;toast(id?'Interviewer updated.':'Interviewer added with a full slot schedule.')})},
+  update(){if(!$('#rolelist'))return;const e=event();
+    $('#slotcount')&&($('#slotcount').textContent=`${S.slots.length} slots · ${S.slots.filter(s=>s.candidateId).length} booked`);
+    $('#rolelist').innerHTML=e.roles.length?e.roles.map(r=>{const n=S.candidates.filter(c=>c.roleId===r.id).length,pr=S.promos.find(p=>p.roleId===r.id);
+      const ch=pr?Object.keys(pr.shared||{}).length+(pr.sentAt?' · auto-published':''):0;
+      return `<div class="person"><div class="who"><b>${esc(r.title)} ${r.status==='closed'?'<span class="pill p-registered">Closed</span>':'<span class="pill p-completed">Open</span>'}</b>
+      <small>${esc(r.team)}${r.type?' · '+esc(r.type):''}${r.pay?' · '+esc(r.pay):''} · ${n} applicant${n===1?'':'s'}${ch?` · shared on ${ch}`:''}</small></div>
+      <div class="row" style="gap:6px"><button class="btn gold sm" data-act="promo" data-id="${r.id}">Promote</button><button class="btn ghost sm" data-act="erole" data-id="${r.id}">Edit</button>
+      <button class="btn ghost sm" data-act="trole" data-id="${r.id}">${r.status==='closed'?'Reopen':'Close'}</button>${n?'':`<button class="btn danger sm" data-act="drole" data-id="${r.id}">Delete</button>`}</div></div>`}).join('')
+      :'<div class="empty">No roles yet. Add the first one.</div>';
+    $('#ivlist').innerHTML=e.interviewers.length?e.interviewers.map(i=>{const b=S.slots.filter(s=>s.interviewerId===i.id&&s.candidateId).length;
+      return `<div class="person"><div class="avatar">${esc(initials(i.name))}</div><div class="who"><b>${esc(i.name)}</b><small>${esc(i.title)} · ${esc(i.room)} · ${esc(i.roleIds.map(x=>roleOf(x).title).join(', '))} · ${b} booked</small></div>
+      <div class="row" style="gap:6px"><button class="btn ghost sm" data-act="eiv" data-id="${i.id}">Edit</button><button class="btn danger sm" data-act="div" data-id="${i.id}">Remove</button></div></div>`}).join('')
+      :'<div class="empty">No interviewers yet.</div>'}
+};
+
+/* ================= Promote: AI posts, banner, one-click sharing ================= */
+const CH=[['linkedin','LinkedIn'],['facebook','Facebook'],['instagram','Instagram'],['x','X'],['indeed','Indeed']];
+const tag=s=>'#'+String(s||'').replace(/[^A-Za-z0-9]/g,'');
+function templatePosts(e,r,link){const req=(r.requirements||[]).slice(0,3);const extra=[r.type,r.pay].filter(Boolean).join(' · ');
+  return{
+   linkedin:`We're hiring: ${r.title} at ${e.org}.\n\n${r.summary}${extra?`\n${extra}`:''}\n\nWhat we're looking for:\n${req.map(x=>'• '+x).join('\n')}\n\nMeet the team at our ${e.name} on ${e.dateLabel} (${e.timeLabel}) in ${e.venue}. Register to interview on the spot:\n${link}\n\n#hiring #jobs ${tag(r.team)} ${tag(e.venue.split(',')[0])}`,
+   facebook:`📣 Now hiring: ${r.title}!\n\n${r.summary} Join us at our ${e.name} on ${e.dateLabel} in ${e.venue}, meet the team, and interview the same day.\n\nRegister here 👉 ${link}`,
+   instagram:`We're hiring a ${r.title} ✨\n\n${r.summary}\n\n📅 ${e.dateLabel}\n📍 ${e.venue}\n\nInterview on the spot at our ${e.name}. Registration link in bio.\n\n#hiring #nowhiring #jobs ${tag(r.team)} ${tag(e.org)}`,
+   x:`We're hiring a ${r.title} at ${e.org}! Interview on the spot at our ${e.name}, ${e.dateLabel}. Register: ${link} #hiring #jobs`.slice(0,280),
+   indeed:`${r.title}\n${e.org} · ${e.venue}${extra?`\n${extra}`:''}\n\nAbout the role\n${r.summary}\n\nRequirements\n${(r.requirements||[]).map(x=>'- '+x).join('\n')}\n\nHow to apply\nRegister for our ${e.name} on ${e.dateLabel} (${e.timeLabel}) and interview on the spot: ${link}`}}
+function shareUrl(ch,text,link){const t=encodeURIComponent(text);
+  return{linkedin:`https://www.linkedin.com/feed/?shareActive=true&text=${t}`,facebook:`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(link)}`,x:`https://x.com/intent/post?text=${t}`}[ch]||null}
+
+let promoRole=null,drawerMode=null;
+const Promo={
+  open(roleId){promoRole=roleId;drawerMode='promo';drawerId=null;const d=$('#drawer');d.classList.add('on');d.setAttribute('aria-hidden','false');$('#scrim').classList.add('on');
+    const r=roleOf(roleId);
+    d.innerHTML=`<div class="dh"><div style="flex:1;min-width:0"><span class="pill p-walk">Promote role</span><h2 style="margin:6px 0 0">${esc(r.title)}</h2><div class="muted">${esc(event().org)} · ${esc(event().name)}</div></div><button class="btn ghost sm" data-act="close">Close</button></div>
+    <div class="db"><div class="panel"><div class="row"><h3 style="margin:0">Banner</h3><span class="spacer"></span><button class="btn ghost sm" id="pbdl">Download PNG</button></div>
+      <canvas id="pban" width="1200" height="627" style="width:100%;height:auto;border-radius:8px;margin-top:10px" aria-label="Job banner preview"></canvas></div>
+    <div class="panel"><div class="row"><h3 style="margin:0">Posts for every channel</h3><span class="spacer"></span><button class="btn gold sm" id="pgen">✦ Write with AI</button></div>
+      <p class="hint" style="margin:6px 0 10px">Ready-to-post drafts are filled in automatically. AI rewrites them in each platform’s style. Edit anything before sharing.</p><div id="pposts"></div></div>
+    <div class="panel"><h3>Publish to all channels</h3><p class="hint" style="margin:0 0 10px">Sends every post, the apply link, and role details to your connected automation, which posts to all accounts at once.</p>
+      <div class="row"><button class="btn" id="pall">Publish to all channels</button><span class="hint" id="pstat"></span></div></div></div>`;
+    $('#pgen').onclick=()=>this.ai();$('#pall').onclick=()=>this.publishAll();$('#pbdl').onclick=()=>this.download();
+    this.renderPosts(true);(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>this.banner());this.banner();this.update()},
+  posts(){const pr=S.promos.find(p=>p.roleId===promoRole);return pr?.posts||templatePosts(event(),roleOf(promoRole),applyLink())},
+  renderPosts(){const p=this.posts();
+    $('#pposts').innerHTML=CH.map(([k,l])=>`<div class="qitem" style="background:var(--panel)"><div class="row"><b>${l}</b><span class="hint" id="pc-${k}"></span><span class="spacer"></span><span id="ps-${k}"></span></div>
+      <textarea id="pt-${k}" style="min-height:${k==='x'?70:120}px;margin-top:8px">${esc(p[k]||'')}</textarea>
+      <div class="row" style="margin-top:8px">${shareUrl(k,'','')!==null?`<a class="btn sm" data-share="${k}" href="#" target="_blank" rel="noopener">Share on ${l}</a>`:''}<button class="btn ghost sm" data-copy="${k}">Copy${k==='instagram'?' caption':''}</button>${k==='instagram'?'<span class="hint">Post with the banner from the Instagram app.</span>':''}${k==='indeed'?'<span class="hint">Paste into Indeed’s job post form.</span>':''}</div></div>`).join('');
+    CH.forEach(([k])=>{const ta=$('#pt-'+k),cnt=()=>{$('#pc-'+k).textContent=k==='x'?`${ta.value.length}/280`:''};ta.oninput=cnt;cnt()});
+    $$('[data-share]').forEach(a=>a.onclick=()=>{const k=a.dataset.share,txt=$('#pt-'+k).value;a.href=shareUrl(k,txt,applyLink());
+      if(k==='facebook')navigator.clipboard?.writeText(txt).catch(()=>{});this.mark(k);if(k==='facebook')toast('Post text copied. Paste it into Facebook.')});
+    $$('[data-copy]').forEach(b=>b.onclick=async()=>{const k=b.dataset.copy;try{await navigator.clipboard.writeText($('#pt-'+k).value);toast('Copied.');this.mark(k)}catch(e){toast('Select the text and copy it.',true)}});
+    this.update()},
+  async save(patch){const id=`${EV}--${promoRole}`;const cur=await store.get('promos',id);
+    if(cur)await store.update('promos',id,patch);else await store.set('promos',id,{eventId:EV,roleId:promoRole,posts:null,shared:{},sentAt:null,...patch})},
+  async mark(k){const pr=S.promos.find(p=>p.roleId===promoRole);await this.save({shared:{...(pr?.shared||{}),[k]:nowISO()}})},
+  update(){if(drawerMode!=='promo'||!$('#pposts'))return;const pr=S.promos.find(p=>p.roleId===promoRole);
+    CH.forEach(([k])=>{const at=pr?.shared?.[k];const el=$('#ps-'+k);if(el)el.innerHTML=at?`<span class="pill p-completed">✓ Shared ${tFmt(at)}</span>`:''});
+    $('#pstat')&&($('#pstat').textContent=pr?.sentAt?`Last published to all channels at ${tFmt(pr.sentAt)}.`:CONFIG.webhookUrl?'Automation connected.':'Connect an automation in Setup → Integrations.')},
+  async ai(){if(!sample){toast('AI writing runs in the Claude-hosted version. The ready-made drafts work everywhere.',true);return}
+    const e=event(),r=roleOf(promoRole),b=$('#pgen');b.disabled=true;b.innerHTML='<span class="spin"></span> Writing…';
+    try{const out=await sample.json(`Write recruiting posts for a job opening. Use ONLY these facts; do not invent pay, benefits, or requirements.
+Organization: ${e.org}
+Event: ${e.name} on ${e.dateLabel}, ${e.timeLabel}, at ${e.venue}. Candidates register online and interview on the spot.
+Role: ${r.title} (${r.team}${r.type?', '+r.type:''}${r.pay?', '+r.pay:''})
+Summary: ${r.summary}
+Requirements: ${(r.requirements||[]).join('; ')}
+Apply link: ${applyLink()}
+Return ONLY JSON: {"linkedin":"professional, 90-140 words, 3-4 bullet requirements, link, 3-4 hashtags","facebook":"friendly, 50-80 words, link, max 2 emoji","instagram":"energetic caption, 40-70 words, 'link in bio' instead of URL, 5-8 hashtags","x":"under 260 characters including link and 2 hashtags","indeed":"plain job post with headings: About the role, Requirements, How to apply"}`);
+      const posts={};CH.forEach(([k])=>{posts[k]=String(out[k]||'')});if(!posts.linkedin)throw 0;posts.x=posts.x.slice(0,280);
+      await this.save({posts,generatedAt:nowISO()});await sleep(150);this.renderPosts();toast('AI posts ready for every channel.')}
+    catch(x){toast(x&&x.code==='not_granted'?'AI access was declined for this session.':'Couldn’t write posts. Try again.',true)}
+    finally{b.disabled=false;b.innerHTML='✦ Rewrite with AI'}},
+  async publishAll(){const url=CONFIG.webhookUrl,st=$('#pstat');if(!url){toast('Add your Make or Zapier webhook in Setup → Integrations first.',true);return}
+    const e=event(),r=roleOf(promoRole),body=new URLSearchParams({event:`${e.org} ${e.name}`,event_date:e.dateLabel,location:e.venue,role:r.title,team:r.team,type:r.type||'',pay:r.pay||'',apply_link:applyLink()});
+    CH.forEach(([k])=>body.append(`${k}_post`,$('#pt-'+k).value));
+    const b=$('#pall');b.disabled=true;b.innerHTML='<span class="spin"></span> Publishing…';
+    try{await fetch(url,{method:'POST',mode:'no-cors',body});await this.save({sentAt:nowISO()});toast('Sent to your automation. It’s posting to every connected channel.')}
+    catch(x){toast('This view can’t reach outside services. Publish from the deployed version, or use the share buttons.',true)}
+    finally{b.disabled=false;b.textContent='Publish to all channels'}},
+  banner(){const c=$('#pban');if(!c)return;const x=c.getContext&&c.getContext('2d');if(!x)return;const _=0,W=1200,H=627,e=event(),r=roleOf(promoRole);
+    x.fillStyle='#FBF8F2';x.fillRect(0,0,W,H);x.strokeStyle='rgba(201,151,58,.30)';x.lineWidth=2;x.beginPath();x.arc(1080,90,230,0,Math.PI*2);x.stroke();x.beginPath();x.arc(1080,90,160,0,Math.PI*2);x.stroke();
+    x.fillStyle='#C9973A';x.fillRect(0,H-10,W,10);x.textBaseline='alphabetic';
+    x.fillStyle='#7A5A16';x.font='700 24px Manrope, Arial, sans-serif';x.fillText(`WE'RE HIRING  ·  ${e.org.toUpperCase()}`.slice(0,60),70,110);
+    x.fillStyle='#13294B';let fs=86;x.font=`500 ${fs}px Fraunces, Georgia, serif`;while(x.measureText(r.title).width>1040&&fs>48){fs-=4;x.font=`500 ${fs}px Fraunces, Georgia, serif`}
+    x.fillText(r.title,70,230);
+    x.fillStyle='#667085';x.font='500 30px Manrope, Arial, sans-serif';const words=(r.summary||'').split(' ');let line='',y=300;
+    for(const w of words){const t=line?line+' '+w:w;if(x.measureText(t).width>900){x.fillText(line,70,y);y+=42;line=w}else line=t}if(line)x.fillText(line,70,y);
+    x.fillStyle='#13294B';x.font='700 30px Manrope, Arial, sans-serif';x.fillText(`${e.name}  ·  ${e.dateLabel}`.slice(0,64),70,470);
+    x.fillStyle='#667085';x.font='500 26px Manrope, Arial, sans-serif';x.fillText(`${e.venue}${r.pay?'  ·  '+r.pay:''}`,70,512);
+    const cta='Register to interview  →';x.font='800 28px Manrope, Arial, sans-serif';const tw=x.measureText(cta).width;x.fillStyle='#13294B';
+    x.beginPath();x.roundRect?x.roundRect(W-tw-130,440,tw+60,70,35):x.rect(W-tw-130,440,tw+60,70);x.fill();x.fillStyle='#FFFFFF';x.fillText(cta,W-tw-100,485)},
+  download(){const c=$('#pban'),name=`${slug(roleOf(promoRole).title).replace(/[^a-z0-9]+/g,'-')}-banner.png`;
+    c.toBlob(async b=>{if(downloads){try{const r=await downloads.save({filename:name,data:b});if(r.status==='saved')toast('Banner saved.')}catch(e){if(e&&e.code!=='declined')toast('Couldn’t save the banner here.',true)}}
+      else{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();a.remove();toast('Banner downloaded.')}},'image/png')}
+};
+document.addEventListener('click',async e=>{const t=e.target.closest('[data-act]');if(!t)return;const a=t.dataset.act,id=t.dataset.id;
+  if(a==='promo')Promo.open(id);
+  else if(a==='erole')V.setup.roleForm(id);
+  else if(a==='trole'){const r=roleOf(id);await A.saveRole({id,status:r.status==='closed'?'open':'closed'});toast(r.status==='closed'?'Role reopened.':'Role closed. It no longer appears on the registration page.')}
+  else if(a==='drole'){if(!confirm('Delete this role?'))return;const r=await A.deleteRole(id);r.ok?toast('Role deleted.'):toast(r.err,true)}
+  else if(a==='eiv')V.setup.ivForm(id);
+  else if(a==='div'){if(!confirm('Remove this interviewer and their open slots?'))return;const r=await A.removeInterviewer(id);r.ok?toast('Interviewer removed.'):toast(r.err,true)}
+});
+
+/* ================= Router & events ================= */
+function show(v){view=v;pref('view',v);$$('.tab').forEach(t=>t.setAttribute('aria-selected',String(t.dataset.view===v)));V[v].mount();refresh();}
+$('#tabs').addEventListener('click',e=>{const t=e.target.closest('.tab');if(t){show(t.dataset.view);window.scrollTo(0,0)}});
+$('#scrim').onclick=()=>Drawer.close();
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&(drawerId||drawerMode))Drawer.close()});
+document.addEventListener('click',async e=>{const t=e.target.closest('[data-act]');if(!t)return;const a=t.dataset.act;
+  if(a==='checkin'){t.disabled=true;await doCheckIn(t.dataset.id)}
+  else if(a==='assign'){const sel=$$('[data-pick]').find(x=>x.dataset.pick===t.dataset.id);if(!sel)return;t.disabled=true;const r=await A.assign(sel.value,t.dataset.id);
+    if(r.ok){toast(`${cand(t.dataset.id)?.name} booked at ${slotFmt(r.s.time)} with ${r.iv.name}.`);delete V.sched.pick[t.dataset.id]}else{toast(r.err,true);t.disabled=false}}
+  else if(a==='unassign'){const r=await A.unassign(t.dataset.slot);r.ok?toast('Slot reopened. Candidate is back in the waiting room.'):toast(r.err,true)}
+  else if(a==='pickslot'){V.iv.slotId=t.dataset.slot;V.iv.update()}
+  else if(a==='start'){t.disabled=true;const r=await A.start(t.dataset.slot);r.ok?toast('Interview started.'):(toast(r.err,true),t.disabled=false)}
+  else if(a==='brief'){aiBrief(t.dataset.id,t)}
+  else if(a==='open'){Drawer.open(t.dataset.id)}
+  else if(a==='close'){Drawer.close()}
+  else if(a==='decide'){const r=await A.decide(t.dataset.id,t.dataset.d);r.ok?toast(`Marked ${DEC[t.dataset.d]}.`):toast(r.err,true)}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'){const r=e.target.closest&&e.target.closest('tr[data-act="open"]');if(r)Drawer.open(r.dataset.id)}});
+$('#evsel').addEventListener('change',e=>{EV=e.target.value;pref('ev',EV);if(drawerId||drawerMode)Drawer.close();subscribeEvent();show(view)});
+
+/* ================= Boot ================= */
+let booted=false;
+function startWith(st){store=st;setLive(st.mode);
+  store.sub('config',null,list=>{CONFIG=list.find(x=>x.id==='main')||{};if(drawerMode==='promo')Promo.update()});
+  store.sub('events',null,list=>{S.events=list.sort((a,b)=>a.id==='tsa-austin'?-1:1);
+    if(!S.events.length){$('#main').innerHTML='<div class="panel empty">No hiring events have been set up yet.</div>';return}
+    $('#evsel').innerHTML=S.events.map(e=>`<option value="${e.id}">${esc(e.org)} · ${esc(e.name)}${e.concept?' (concept)':''}</option>`).join('');
+    if(!EV||!S.events.some(e=>e.id===EV)){EV=pref('ev');if(!S.events.some(e=>e.id===EV))EV=S.events[0].id}
+    $('#evsel').value=EV;
+    if(!booted){booted=true;subscribeEvent();show(pref('view')&&V[pref('view')]?pref('view'):'cmd')}});}
+(async()=>{
+  const use=window.claude&&window.claude.use?n=>window.claude.use(n).catch(()=>null):async()=>null;
+  const timeout=new Promise(r=>setTimeout(()=>r(null),4000));
+  const db=await Promise.race([use('db'),timeout]);
+  if(db){let canWrite=true;try{const user=await Promise.race([use('user'),sleep(3000).then(()=>null)]);if(user&&(await user.can('data.write'))===false)canWrite=false}catch(e){}
+    if(!canWrite)startWith(new LocalStore());
+    else{try{await db.collection('events').limit(1).get();startWith(new DbStore(db))}catch(e){startWith(new LocalStore())}}}
+  else startWith(new LocalStore());
+  use('sample').then(s=>{sample=s});use('downloads').then(d=>{downloads=d});
+})();
+</script>
+</body>
+</html>
